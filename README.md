@@ -10,3 +10,4 @@ Another entry in the Magic Mechanics mod series, weapons with enchantments of Ca
 Another entry in the Magic Mechanics mod series, adds the ability to control spell projectiles during flight.
 
 ## [MM - Enhanced Detection](https://www.nexusmods.com/morrowind/mods/47480)
+The third entry in the Magic Mechanics series, this mod adds new Oblivion-inspired visual effects and mechanics for the vanilla detection magic effects, as well as adds 7 new magic effects. It integrates those effects into new spells and distributes them in-game to spell vendors. It does all of this without requiring an ESP.
