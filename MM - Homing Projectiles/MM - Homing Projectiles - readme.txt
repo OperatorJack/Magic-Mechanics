@@ -1,4 +1,4 @@
-Magic Mechanics - Homing Projectiles
+MM - Homing Projectiles
 
 By: OperatorJack
 

@@ -1,4 +1,4 @@
-Enhanced Detection
+MM - Enhanced Detection
 
 By: OperatorJack, Kurpulio and RedFurryDemon
 

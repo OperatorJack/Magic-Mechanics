@@ -1,4 +1,4 @@
-Magicka Expanded - Cortex Pack
+MM - Cast-On-Swing Enchantments
 
 By: OperatorJack & RedFurryDemon
 
