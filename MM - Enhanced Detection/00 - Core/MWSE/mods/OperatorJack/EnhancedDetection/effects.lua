@@ -107,8 +107,7 @@ local function addMagicEffects()
 						objectType = tes3.objectType.static,
 						id = id,
 						mesh = mesh
-					}) 
-					print("[Enhanced Detection: INFO] Static " .. id .. " created with mesh at path " .. mesh)
+					})
 				else
 					print("[Enhanced Detection: ERROR] Static " .. id .. " missing mesh at path " .. mesh)
 					return

@@ -1,4 +1,4 @@
-MM - Enhanced Detection
+Magic Mechanics - Enhanced Detection
 
 By: OperatorJack, Kurpulio and RedFurryDemon
 
@@ -52,6 +52,10 @@ This mod is provided via a BAIN installer consisting of 3 components:
  * Alternative VFX. The VFX provided in 00 - Core may not work on some graphics cards. If you have this issue, experience a significant FPS drop, or just prefer a minimalist view, use these alternative VFX. This is optional.
 
 This mod IS NOT compatible with OpenMW, at least until support for MWSE mods is added.
+
+====Magic Mechanics Mod Series====
+The Magic Mechanics mod series is a collection of mods that expand, improve and alter the vanilla Morrowind magic system in various ways. Mods in this series start with the abbreviation "MM" in their titles. To view all of the mods currently in the series, take a look at the series documentation on GitHub!
+https://github.com/OperatorJack/Magic-Mechanics/blob/master/README.md
 
 ====Permissions====
 This mod may be utilized for any purpose for Morrowind, as long as you credit me as the original author. It may not be used for other games.

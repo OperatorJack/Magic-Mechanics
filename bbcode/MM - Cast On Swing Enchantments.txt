@@ -1,0 +1,43 @@
+[center]
+[b][size=5]Magic Mechanics - Cast-On-Swing Enchantments[/size][/b]
+[b][size=4]By: OperatorJack[/size][/b]
+
+
+[youtube]uYlsmsElFqY[/youtube]
+[/center]
+
+[b][size=4]Description[/size][/b]
+[size=3]This mod makes it so that weapons with enchantments of Cast-On-Strike and Cast-On-Use types will work without hitting a target. Just swing your weapon and the enchantment will work as normal, sending a spell projectile towards your target.[/size]
+
+[b][size=4]Magic Mechanics Mod Series[/b]
+[size=3]The Magic Mechanics mod series is a collection of mods that expand, improve and alter the vanilla Morrowind magic system in various ways. Mods in this series start with the abbreviation "MM" in their titles. To view all of the mods currently in the series, take a look at the [url=https://github.com/OperatorJack/Magic-Mechanics/blob/master/README.md]series documentation[/url] on GitHub![/size]
+
+[b][size=4]Requirements[/size][/b]
+[size=3]- Morrowind[/size]
+[size=3]- Tribunal[/size]
+[size=3]- Bloodmoon[/size]
+[size=3]- MGE XE 0.10.1[/size]
+[size=3]- MWSE 2.1+[/size]
+[size=3]- Magicka Expanded Framework (Package 00 - Framework)[/size]
+
+[b][size=4]Permissions[/size][/b]
+[size=3]These mods may be utilised for any purpose for Morrowind, as long as you credit me as the original author, except as described below. They may not be used for other games.[/size]
+
+[b][size=4]Conflicts[/size][/b]
+[size=3]These mods may conflict with mods that add new magic mechanics, or alter existing mechanics. [/size]
+[size=3]They are fully compatible with Magicka Expanded. [/size]
+[size=3]I do not recommend using them with 4NM_Magic due to it having some similar, conflicting mechanics.[/size]
+
+[b][size=4]Installation & Removal[/size][/b]
+[size=3][b]Installation[/b]:[/size]
+[size=3]Copy the mod contents to your Data Files directory or use a mod installer.[/size]
+[size=3][b]Removal[/b]:[/size]
+[size=3]Uninstall this mod using your mod management tool or delete the mod contents from your Data Files directory.[/size]
+
+[b][size=4]Credits[/size][/b]
+[size=3]
+- NullCascade, Greatness7 and Merlord - on-going help and development of MWSE.
+- NullCascade for adding the MWSE mechanics using in "Homing Projectiles".
+- Greatness7 for help in developing all mechanics and his limitless game mechanic knowledge.
+- The concept art used in the images section is found [url=https://www.artstation.com/artwork/Xq43D]here[/url], from [url=https://www.artstation.com/lorenzobruzzese]Lorenzo Bruzzese[/url].
+[/size]

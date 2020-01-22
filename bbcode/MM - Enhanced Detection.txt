@@ -1,4 +1,4 @@
-[b][center][size=5]Enhanced Detection[/size]
+[b][center][size=5]Magic Mechanics - Enhanced Detection[/size]
 [size=4]By: OperatorJack, Kurpulio and RedFurryDemon[/size][/center][/b]
 [center][youtube]ixfBFv3N5HA[/youtube][/center]
 
@@ -8,12 +8,13 @@
 - Bloodmoon
 - MGE XE 0.10.1
 - MWSE 2.1+
-- Magicka Expanded
+- [url=https://www.nexusmods.com/morrowind/mods/47111]Magicka Expanded[/url] 1.31+
 
-This mod requires the most recently nightly build of MWSE. Please be sure to run the mwse-update.exe before playing this mod.
+This mod requires the most recently nightly build of MWSE. Please be sure to run the mwse-update.exe before playing this mod. If your MWSE build is not from January 22, 2020 or newer, you will receive errors.
 
-This mod requires the Magicka Expanded base package.
-https://www.nexusmods.com/morrowind/mods/47111
+This mod requires the [url=https://www.nexusmods.com/morrowind/mods/47111]Magicka Expanded[/url] base package, version 1.31 or newer.
+
+The visual effects in this mod were designed to work with Nvidia graphics cards. They should also work with Intel graphics cards. Other types of, or very old, graphics cards may have some display issues. If you encounter any display issues, contact Kurpulio on the Morrowind Modding Discord. You can use the alternate VFX to resolve visual issues and continue playing. Kurpulio is working to create additional alternative VFX for older video cards, too.
 
 [b][size=3]Description[/size][/b]
 This mod adds new Oblivion-inspired visual effects and mechanics for the vanilla detection magic effects, as well as adds 7 new magic effects. It integrates those effects into new spells and distributes them in-game to spell vendors. It does all of this without requiring an ESP. 
@@ -26,7 +27,7 @@ The following vanilla magic effects now have new visual effects and mechanics:
 The following new magic effects use the new visual effects and mechanics:
 - Detect Automaton
 - Detect Daedra
-- Detect Door
+- Detect Dead
 - Detect Door
 - Detect Humanoid
 - Detect Trap
@@ -44,14 +45,17 @@ This mod is provided via a BAIN installer consisting of 3 components:
 00 - Core﻿
 [list]
 [*]The base mod. This includes the new effects, spells, and VFX. This is required.
-[/list]01 - VFX
+[/list]01 - Cast VFX
 [list]
-[*]Additional VFX. This includes more VFX that replacing the hit and casting VFX for the detection effects. You must enable an ESP to use these VFX. This is optional.
-[/list]02 - Alternative VFX
+[*]Additional VFX. This includes more VFX that replacing the default Mysticism hit and casting VFX for the detection effects. This is optional.
+[/list]02 - Alternate VFX
 [list]
-[*]Alternative VFX. The VFX provided in 00 - Core may not work on some graphics cards. If you encounter issues, you can install this to have universally friendly VFX. This is optional.
+[*]The VFX provided in 00 - Core may not work on some graphics cards. If you have this issue, experience a significant FPS drop, or just prefer a minimalist view, use these alternative VFX. This is optional.
 [/list]
 This mod IS NOT compatible with OpenMW, at least until support for MWSE mods is added.
+
+[b][size=3]Magic Mechanics Mod Series[/size][/b]
+[size=3]The Magic Mechanics mod series is a collection of mods that expand, improve and alter the vanilla Morrowind magic system in various ways. Mods in this series start with the abbreviation "MM" in their titles. To view all of the mods currently in the series, take a look at the [url=https://github.com/OperatorJack/Magic-Mechanics/blob/master/README.md]series documentation[/url] on GitHub![/size]
 
 [b][size=3]Permissions
 [/size][/b]MWSE-Lua code may be used for any purpose for Morrowind. Please do not use it for other games. Please credit OperatorJack as the original author of any code.
