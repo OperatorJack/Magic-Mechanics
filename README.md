@@ -20,6 +20,9 @@ If you use any of the mods above, you likely already have this mod installed. It
 
 This mod provides a framework to add new and fully functional magic effects to Morrowind. These effects behave just like vanilla effects: you can create new spells, enchant items, give them to companions, and treat them how any other effect would be treated.
 
+Specifically, the Cortex spell pack adds *many* new magic mechanics that are on par with any on this list.
+
+
 ## [Illegal Summoning](https://www.nexusmods.com/morrowind/mods/47105)
 This mod makes it so that performing a summoning spell in a town or city is illegal, as it was originally intended to be. Performing a summoning spell and being caught while doing it will give you a bounty of 500 gold per summoning effect, per cast! If you cast a spell with 8 summoning effects, you will gain a bounty of 4000 gold. However, like with other crimes, it is possible to cast a summoning spell and not get caught. Guards will respond similarly to as if you stole an item or attacked someone.
 
