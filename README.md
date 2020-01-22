@@ -1,6 +1,11 @@
 # Magic Mechanics
 The Magic Mechanics mod series is a collection of mods that expand, improve and alter the vanilla Morrowind magic system in various ways. Mods in this series start with the abbreviation "MM" in their titles.
 
+The mod series is made up of the following authors:
+- OperatorJack
+- Kurpulio
+- RedFurryDemon
+
 The mod series currently consists of the following mods:
 
 ## [MM - Cast-On-Swing Enchantments](https://www.nexusmods.com/morrowind/mods/47338)
