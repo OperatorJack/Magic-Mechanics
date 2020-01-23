@@ -17,6 +17,9 @@ Another entry in the Magic Mechanics mod series, adds the ability to control spe
 ## [MM - Enhanced Detection](https://www.nexusmods.com/morrowind/mods/47480)
 The third entry in the Magic Mechanics series, this mod adds new Oblivion-inspired visual effects and mechanics for the vanilla detection magic effects, as well as adds 7 new magic effects. It integrates those effects into new spells and distributes them in-game to spell vendors. It does all of this without requiring an ESP.
 
+## [MM - Enhanced Telekinesis](https://www.nexusmods.com/morrowind/mods/47534)
+The fourth entry in the Magic Mechanics mod series, this mod is inspired by Fliggerty's Better Telekinesis. Using telekinesis will now propel objects towards you with special effects instead of immediately picking the item up.
+
 # Honorable Mentions
 These mods are not part of the Magic Mechanics mod series, but they do add new mechanics.
 
