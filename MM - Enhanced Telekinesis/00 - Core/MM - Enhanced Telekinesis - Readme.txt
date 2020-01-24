@@ -16,6 +16,12 @@ Inspired by Fliggerty's Better Telekinesis, using telekinesis will now propel ob
 
 If you change cells while an item is being moved towards you, or under certain other conditions, the item will be returned to it's original location.
 
+This mod is provided via a BAIN installer consisting of 2 components:
+00 - Core
+ * The base mod. This includes the new mechanic and VFX. This is required.
+01 - Cast VFX
+ * Additional VFX. This includes more VFX that replace the default hit and casting VFX for the telekinesis effects. This is optional.
+
 This mod does not use an ESP. This mod IS NOT compatible with OpenMW, at least until support for MWSE mods is added.
 
 ====Magic Mechanics Mod Series====
@@ -39,4 +45,5 @@ Use a mod management tool to remove any installed files from your mod directory.
 
 - Fliggerty for his original mod that inspired this one.
 - EJ-12 for his help and advice on particles and meshes.
+- Arkann : this mod uses casting and hit vfx from Magic Diversity as they look better than vanilla. In future there will be new more matching vfx for these too. These are used in the "01 - Cast VFX" package.
 - Greatness7, Merlord, R-Zero and the other people over on the Morrowind Modding Discord for their help and input.

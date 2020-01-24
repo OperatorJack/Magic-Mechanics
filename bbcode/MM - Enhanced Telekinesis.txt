@@ -1,7 +1,7 @@
 [center][b][size=5]Magic Mechanics - Enhanced Telekinesis[/size]
 [size=4]By: OperatorJack and Kurpulio
 
-[/size][/b][/center][size=3][b][center][youtube]2HxuDTWnmB0[/youtube][/center]
+[/size][/b][/center][size=3][b][center][youtube]YHj30pKugzQ[/youtube][/center]
 
 
 Requirements[/b][/size]
@@ -18,6 +18,14 @@ Inspired by Fliggerty's Better Telekinesis, using telekinesis will now propel ob
 
 If you change cells while an item is being moved towards you, or under certain other conditions, the item will be returned to it's original location.
 
+This mod is provided via a BAIN installer consisting of 2 components:
+00 - Core
+[list]
+[*] The base mod. This includes the new mechanic and VFX. This is required.
+[/list]01 - Cast VFX
+[list]
+[*] Additional VFX. This includes more VFX that replace the default hit and casting VFX for the telekinesis effects. This is optional.
+[/list]
 This mod does not use an ESP. This mod IS NOT compatible with OpenMW, at least until support for MWSE mods is added.
 
 [b][size=3]Magic Mechanics Mod Series[/size][/b]
@@ -39,5 +47,6 @@ Use a mod management tool to remove any installed files from your mod directory.
 - Kurpulio for designing and creating the VFX.
 
 - Fliggerty for his original mod that inspired this one.
-- EJ-12 for his help and advice on particles and meshes.
-- Greatness7, Merlord, R-Zero and the other people over on the Morrowind Modding Discord for their help and input.
+- EJ-12 for his help and advice on particles and meshes, and creating mipmaps for some textures.
+- Arkann : this mod uses casting and hit vfx from Magic Diversity as they look better than vanilla. In the future there will be new more matching vfx for these too.
+- Greatness7, Merlord, R-Zero, Melchior Dahrk and the other people over on the Morrowind Modding Discord for their help and input.

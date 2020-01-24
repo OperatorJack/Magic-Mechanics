@@ -18,6 +18,8 @@ local onActivate = nil
 ----------------------------
 
 -- Declare Data Structures --
+local activateDist = 192
+
 local VisualController = {
   new = function(self, o)
     o = o or {}   -- create object if user does not provide one
@@ -60,9 +62,13 @@ local VisualController = {
 -------------------------
 
 -- Initialize Controllers --
-local visualController = VisualController:new({ 
+local tempVisualController = VisualController:new({ 
   vfxName = "OJ_ET_Telekinesis",
   vfxPath = "OJ\\ET\\telekinesis1.nif"
+})
+local permVisualController = VisualController:new({ 
+  vfxName = "OJ_ET_Telekinesis",
+  vfxPath = "OJ\\ET\\telekinesis2.nif"
 })
 
 local target = nil
@@ -130,7 +136,7 @@ onSimulate = function()
     local midpoint = getPlayerChestPosition()
 
     -- If target is not within reach,
-    if (target.position:distance(midpoint) > 128) then
+    if (target.position:distance(midpoint) > activateDist) then
       -- Apply movement.
       target.position = target.position:interpolate(midpoint, interpolationDistance)  
 
@@ -165,7 +171,7 @@ onSimulate = function()
   end
 end
 
-local types = {
+local pickupTypes = {
   [tes3.objectType.alchemy] = true,
   [tes3.objectType.ammunition] = true,
   [tes3.objectType.apparatus] = true,
@@ -180,8 +186,16 @@ local types = {
   [tes3.objectType.repairItem] = true,
   [tes3.objectType.weapon] = true,
 }
+
+local tempTypes = {
+  [tes3.objectType.container] = true,
+  [tes3.objectType.door] = true,
+  [tes3.objectType.book] = true
+}
+
 onActivate = function(e)
-  if (types[e.target.object.objectType] == nil and target == nil) then
+  local objectType = e.target.object.objectType
+  if (pickupTypes[objectType] == nil and tempTypes[objectType] == nil and target == nil) then
     return
   end
 
@@ -196,15 +210,21 @@ onActivate = function(e)
   -- Block telekinesis on owned books.
   if ( e.target.object.objectType == tes3.objectType.book) then
     if (not tes3.hasOwnershipAccess({ target = e.target })) then
+      tempVisualController:attach(e.target)
       return
     end
   end
   
   local midpoint = getPlayerChestPosition()
-  if (e.target.position:distance(midpoint) > 128) then  
+  if (e.target.position:distance(midpoint) > activateDist) then 
+    if (tempTypes[objectType]) then
+      tempVisualController:attach(e.target)
+      return
+    end
+
     target = e.target
     targetOriginalPosition = target.position
-    visualController:attach(target)
+    permVisualController:attach(target)
  
     return false
   end 
@@ -246,10 +266,46 @@ local function onLoaded(e)
   end
   timerController.active = false
 
-  visualController:load()
+  permVisualController:load()
+  tempVisualController:load()
+
+  activateDist = tes3.findGMST(tes3.gmst.iMaxActivateDist).value
 
   print("[Enhanced Telekinesis: INFO] Initialized.")
 end
 event.register("loaded", onLoaded)
+
+local vfx = {
+  castId = "VFX_OJ_ET_TeleCast",
+  hitId = "VFX_OJ_ET_TeleCast",
+  cast = "OJ\\ET\\TeleCast.nif",
+  hit = "OJ\\ET\\TeleHit.nif",
+  particleTexture = "OJ\\ET\\ark\\VFX_AbsoMagic3.dds"
+}
+local function onInit()
+  if (tes3.getFileExists("meshes\\"..vfx.cast) == true) then
+    if (tes3.getObject(vfx.castId) == nil) then
+        tes3.createObject({
+          objectType = tes3.objectType.static,
+          id = vfx.castId,
+          mesh = vfx.cast
+        })
+    end
+    if (tes3.getObject(vfx.hitId) == nil) then
+        tes3.createObject({
+          objectType = tes3.objectType.static,
+          id = vfx.hitId,
+          mesh = vfx.hit
+        })
+    end
+
+    local effect = tes3.getMagicEffect(tes3.effect.telekinesis)
+    effect.castVisualEffect = tes3.getObject(vfx.castId)
+    effect.hitVisualEffect = tes3.getObject(vfx.hitId)
+    effect.particleTexture = vfx.particleTexture
+  end
+end
+
+event.register("initialized", onInit)
 -------------------------
 
