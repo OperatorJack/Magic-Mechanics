@@ -1,5 +1,5 @@
 -- Check MWSE Build --
-if (mwse.buildDate == nil) or (mwse.buildDate < 20200111) then
+if (mwse.buildDate == nil) or (mwse.buildDate < 20200123) then
     local function warning()
         tes3.messageBox(
             "[Enhanced Telekinesis ERROR] Your MWSE is out of date!"

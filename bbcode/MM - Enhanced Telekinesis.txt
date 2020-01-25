@@ -11,7 +11,7 @@ Requirements[/b][/size]
 - MGE XE 0.10.1
 - MWSE 2.1+
 
-This mod requires the most recently nightly build of MWSE. Please be sure to run the mwse-update.exe before playing this mod. If your MWSE build is not from January 12, 2020 or newer, you will receive errors.
+This mod requires the most recently nightly build of MWSE. Please be sure to run the mwse-update.exe before playing this mod. If your MWSE build is not from January 23, 2020 or newer, you will receive errors.
 
 [size=3][b]Description[/b][/size]
 Inspired by Fliggerty's Better Telekinesis, using telekinesis will now propel objects towards you with special effects instead of immediately picking the item up. Once they reach a certain distance from you, they will automatically be picked up. Items than cannot be picked up (beds, doors, etc.) and owned books will not be propelled towards you. These objects will instead show a temporary VFX.
