@@ -12,7 +12,7 @@ By: OperatorJack and Kurpulio
 This mod requires the most recently nightly build of MWSE. Please be sure to run the mwse-update.exe before playing this mod. If your MWSE build is not from January 12, 2020 or newer, you will receive errors.
 
 ===Description===
-Inspired by Fliggerty's Better Telekinesis, using telekinesis will now propel objects towards you with special effects instead of immediately picking the item up. Once they reach a certain distance from you, they will automatically be picked up. Items than cannot be picked up (beds, doors, etc.) and owned books will not use this new mechanic.
+Inspired by Fliggerty's Better Telekinesis, using telekinesis will now propel objects towards you with special effects instead of immediately picking the item up. Once they reach a certain distance from you, they will automatically be picked up. Items than cannot be picked up (beds, doors, etc.) and owned books will not be propelled towards you. These objects will instead show a temporary VFX.
 
 If you change cells while an item is being moved towards you, or under certain other conditions, the item will be returned to it's original location.
 

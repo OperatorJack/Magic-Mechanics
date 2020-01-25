@@ -62,13 +62,13 @@ local VisualController = {
 -------------------------
 
 -- Initialize Controllers --
-local tempVisualController = VisualController:new({ 
-  vfxName = "OJ_ET_Telekinesis",
-  vfxPath = "OJ\\ET\\telekinesis1.nif"
-})
 local permVisualController = VisualController:new({ 
-  vfxName = "OJ_ET_Telekinesis",
-  vfxPath = "OJ\\ET\\telekinesis2.nif"
+  vfxName = "OJ_ET_Telekinesis_pull",
+  vfxPath = "OJ\\ET\\telekinesis_pull.nif"
+})
+local tempVisualController = VisualController:new({ 
+  vfxName = "OJ_ET_Telekinesis_stat",
+  vfxPath = "OJ\\ET\\telekinesis_stat.nif"
 })
 
 local target = nil
@@ -211,6 +211,13 @@ onActivate = function(e)
   if ( e.target.object.objectType == tes3.objectType.book) then
     if (not tes3.hasOwnershipAccess({ target = e.target })) then
       tempVisualController:attach(e.target)
+      timer.start({
+        duration = 10,
+        iterations = 1,
+        callback = function()
+          tempVisualController:detach(e.target)
+        end
+      })
       return
     end
   end
@@ -219,6 +226,13 @@ onActivate = function(e)
   if (e.target.position:distance(midpoint) > activateDist) then 
     if (tempTypes[objectType]) then
       tempVisualController:attach(e.target)
+      timer.start({
+        duration = 10,
+        iterations = 1,
+        callback = function()
+          tempVisualController:detach(e.target)
+        end
+      })
       return
     end
 
