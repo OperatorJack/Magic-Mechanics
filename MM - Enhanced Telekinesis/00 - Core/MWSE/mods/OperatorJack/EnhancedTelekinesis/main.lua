@@ -76,10 +76,10 @@ local targetOriginalPosition = nil
 eventController = {
     active = false,
     register = function(self)
-      self:unregister()
-
       self.active = true
 
+      event.unregister("activate", onActivate, {priority = 1e+06})
+      event.unregister("simulate", onSimulate)
       event.register("simulate", onSimulate)
       event.register("activate", onActivate, {priority = 1e+06})
     end,
