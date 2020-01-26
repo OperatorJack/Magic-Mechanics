@@ -283,6 +283,10 @@ local function onLoaded(e)
   permVisualController:load()
   tempVisualController:load()
 
+  if (tes3.isAffectedBy({reference = tes3.player, effect = tes3.effect.telekinesis}) == true) then
+    timerController:start()
+  end
+
   activateDist = tes3.findGMST(tes3.gmst.iMaxActivateDist).value
 
   print("[Enhanced Telekinesis: INFO] Initialized.")
