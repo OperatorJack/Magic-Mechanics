@@ -2,6 +2,8 @@
 [size=4]By: OperatorJack, Kurpulio and RedFurryDemon[/size][/center][/b]
 [center][youtube]ixfBFv3N5HA[/youtube][/center]
 
+[url=https://www.youtube.com/watch?v=6EXWHGlhxwM][center][size=3][b][u]Click here for a video of the new VFX update![/u][/b][/size][/center][/url]
+
 [b][size=3]Requirements[/size][/b]
 - Morrowind
 - Tribunal
@@ -13,8 +15,6 @@
 This mod requires the most recently nightly build of MWSE. Please be sure to run the mwse-update.exe before playing this mod. If your MWSE build is not from January 22, 2020 or newer, you will receive errors.
 
 This mod requires the [url=https://www.nexusmods.com/morrowind/mods/47111]Magicka Expanded[/url] base package, version 1.31 or newer.
-
-The visual effects in this mod were designed to work with Nvidia graphics cards. They should also work with Intel graphics cards. Other types of, or very old, graphics cards may have some display issues. If you encounter any display issues, contact Kurpulio on the Morrowind Modding Discord. You can use the alternate VFX to resolve visual issues and continue playing. Kurpulio is working to create additional alternative VFX for older video cards, too.
 
 [b][size=3]Description[/size][/b]
 This mod adds new Oblivion-inspired visual effects and mechanics for the vanilla detection magic effects, as well as adds 7 new magic effects. It integrates those effects into new spells and distributes them in-game to spell vendors. It does all of this without requiring an ESP. 
@@ -35,7 +35,7 @@ The following new magic effects use the new visual effects and mechanics:
 
 Each of these magic effects have the following new mechanic. Whenever you cast a spell containing the detection effect, the type for the effect will be looked for, using the magnitude (distance) of the spell effect. If the type (automaton, daedra, door, etc.,) is found, the new visual effects are shown for them. If the move out of range of the spell, you change cells, or some number of other things happens, the visual effect is removed. For example, if you cast a spell containing "Detect Key", any keys within range of the spell will now have the new visual effects attached to them! Depending on the spell effect, this can be useful in quests, looting, escaping dungeons, etc.
 
-The new visual effects have unique properties. Each magic effect has its own visual effects. These visual effects (VFX) will show through walls, floors, and any other objects. These VFX are performance friendly and you should notice no FPS impact from this mod.
+The new visual effects have unique properties. Each magic effect has its own visual effects. These visual effects (VFX) will show through walls, floors, and any other objects. These VFX are performance friendly and you should notice no FPS impact from this mod. As of version 1.2, these VFX will also fade-in and fade-out depending on your distance to the VFX. If you get very close to the object, the VFX will fade-out so you can better see it. This helps prevent your screen from being too croweded.
 
 The new mechanics and VFX also apply to enchantments, powers, abilities, and any other magic-related scroll that uses the detection magic effects.
 
@@ -50,8 +50,12 @@ This mod is provided via a BAIN installer consisting of 3 components:
 [*]Additional VFX. This includes more VFX that replacing the default Mysticism hit and casting VFX for the detection effects. This is optional.
 [/list]02 - Alternate VFX
 [list]
-[*]The VFX provided in 00 - Core may not work on some graphics cards. If you have this issue, experience a significant FPS drop, or just prefer a minimalist view, use these alternative VFX. This is optional.
+[*]If you prefer a minimalist view, use these alternative VFX. This is optional.
+[/list]03 - Nvidia VFX
+[list]
+[*]These VFX are designed for Nvidia graphics card and have higher quality effects and visuals. However, these VFX do not have the fade-in / fade-out ability that the normal VFX do. If you used this mod before the Nvidia component was introduced, this was the VFX previously in 00 - Core. This is optional.
 [/list]
+
 This mod IS NOT compatible with OpenMW, at least until support for MWSE mods is added.
 
 [b][size=3]Magic Mechanics Mod Series[/size][/b]
@@ -64,6 +68,8 @@ Otherwise, this mod or its contents may not be used without contacting the autho
 
 [b][size=3]Installation[/size][/b]
 Use the provided BAIN installer in a mod management tool to install the desired components.
+
+If you are upgrading from a previous version, please fully uninstall the meshes and texture files before upgrading. You do not need to launch Morrowind while uninstalling. Just delete the old files and then install the new ones. 
 
 [b][size=3]Removal[/size][/b]
 Use a mod management tool to remove any installed files from your mod directory.

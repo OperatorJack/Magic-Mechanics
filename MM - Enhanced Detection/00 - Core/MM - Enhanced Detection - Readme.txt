@@ -49,7 +49,9 @@ This mod is provided via a BAIN installer consisting of 3 components:
 01 - Cast VFX
  * Additional VFX. This includes more VFX that replace the default Mysticism hit and casting VFX for the detection effects. This is optional.
 02 - Alternate VFX
- * Alternative VFX. The VFX provided in 00 - Core may not work on some graphics cards. If you have this issue, experience a significant FPS drop, or just prefer a minimalist view, use these alternative VFX. This is optional.
+ * Alternative VFX. If you just prefer a minimalist view, use these alternative VFX. This is optional.
+03 - Nvidia VFX
+ * Alternative VFX. These VFX are designed for Nvidia graphics card and have higher quality effects and visuals. However, these VFX do not have the fade-in / fade-out ability that the normal VFX do. If you used this mod before the Nvidia component was introduced, this was the VFX previously in 00 - Core. This is optional.
 
 This mod IS NOT compatible with OpenMW, at least until support for MWSE mods is added.
 
