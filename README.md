@@ -20,6 +20,9 @@ The third entry in the Magic Mechanics series, this mod adds new Oblivion-inspir
 ## [MM - Enhanced Telekinesis](https://www.nexusmods.com/morrowind/mods/47534)
 The fourth entry in the Magic Mechanics mod series, this mod is inspired by Fliggerty's Better Telekinesis. Using telekinesis will now propel objects towards you with special effects instead of immediately picking the item up.
 
+## [MM - Enhanced Invisibility](https://www.nexusmods.com/morrowind/mods/47565)
+Using Invisibility now changes the way you view the world. Instead of only becoming transparent, you see through an ethereal lens that warps and twists the environment around you. Daedra and Undead feature new VFX, making them distinct from other creatures around you.
+
 # Honorable Mentions
 These mods are not part of the Magic Mechanics mod series, but they do add new mechanics.
 
