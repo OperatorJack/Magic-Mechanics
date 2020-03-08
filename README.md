@@ -23,6 +23,9 @@ The fourth entry in the Magic Mechanics mod series, this mod is inspired by Flig
 ## [MM - Enhanced Invisibility](https://www.nexusmods.com/morrowind/mods/47565)
 Using Invisibility now changes the way you view the world. Instead of only becoming transparent, you see through an ethereal lens that warps and twists the environment around you. Daedra and Undead feature new VFX, making them distinct from other creatures around you.
 
+## [MM - Enhanced Light](https://www.nexusmods.com/morrowind/mods/47672)
+The light magic effect has been replaced with a Skyrim-style magelight effect. Using the new magelight effect creates an orb of light that will follow and float around you and other NPCs. Casting the magelight on a target location will create an orb of light at the location for the duration of the spell.
+
 # Honorable Mentions
 These mods are not part of the Magic Mechanics mod series, but they do add new mechanics.
 
