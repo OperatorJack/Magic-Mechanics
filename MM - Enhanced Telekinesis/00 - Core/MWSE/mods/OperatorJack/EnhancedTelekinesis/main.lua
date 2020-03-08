@@ -39,9 +39,9 @@ local VisualController = {
     if (ref.sceneNode) then
       local node = self.vfx:clone()
       local boundingBox = ref.object.boundingBox
-        if (boundingBox) then
-          node.translation = (boundingBox.min + boundingBox.max) * 0.5
-        end
+      if (boundingBox) then
+        node.translation = (boundingBox.min + boundingBox.max) * 0.5
+      end
 
       ref.sceneNode:attachChild(node, true)
       ref.sceneNode:update()
