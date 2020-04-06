@@ -1,5 +1,5 @@
 # Magic Mechanics
-The Magic Mechanics mod series is a collection of mods that expand, improve and alter the vanilla Morrowind magic system in various ways. Mods in this series start with the abbreviation "MM" in their titles.
+The Magic Mechanics mod series is a collection of mods that expand, improve, and alter the vanilla Morrowind magic system in various ways. Mods in this series start with the abbreviation "MM" in their titles.
 
 The mod series is made up of the following authors:
 - [OperatorJack](https://www.nexusmods.com/morrowind/users/61791411)
