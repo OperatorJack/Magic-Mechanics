@@ -41,16 +41,12 @@ Installation
 ==============
 Use a mod management tool to install the mod.
 
-It is not recommended to use PPL (pixel per lighting) in MGE XE with this mod as it can cause lighting issues. If you use PPL, alternate VFX files are included; see below. To disable it, open MGE XE, and in "distant land" tab, uncheck PPL.
-
 For players with low PC who have fps problem with original VFX, there is a more performance friendly VFX (without particles)
 
 This mod is provided via a BAIN installer consisting of 3 components: 
 00 - Core files
 * This component is required.
-01 - Optional PPL
-* VFX files for PPL users. Install in addition to core, if needed.
-02 - Optional FPS
+01 - Optional FPS
 * For older computers, if you experience lighting or FPS issues. Install in addition to core, if needed.
 
 

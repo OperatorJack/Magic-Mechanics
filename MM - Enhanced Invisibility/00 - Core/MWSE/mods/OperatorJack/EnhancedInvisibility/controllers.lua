@@ -173,7 +173,7 @@ timerController = {
   
         if (count == 0) then
           -- Disable shaders.
-          print("Disabling shader.")
+          --print("Disabling shader.")
           mge.disableShader({shader="Invisibility"})
           shaderActive = false
 
@@ -185,7 +185,7 @@ timerController = {
 
     if (stateControllers.active == true and shaderActive == false) then
       -- Enable shaders.
-      print("Enabling shader.")
+      --print("Enabling shader.")
       mge.enableShader({shader="Invisibility"})
       shaderActive = true
     end
@@ -219,7 +219,7 @@ timerController = {
         iterations = 100,
         duration = 0.01,
         callback = function()
-          print("Disabling shader.")
+          --print("Disabling shader.")
           mge.disableShader({shader="Invisibility"})
           shaderActive = false
         end
