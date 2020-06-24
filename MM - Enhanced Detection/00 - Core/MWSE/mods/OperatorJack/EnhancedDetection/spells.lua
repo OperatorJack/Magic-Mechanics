@@ -141,7 +141,7 @@ local function registerSpells()
     })
     framework.spells.createComplexSpell({
         id = spellIds.heartbeat,
-        name = "Heartbeat",
+        name = "Detect Creature",
         magickaCost = 10,
         effects = {
             [1] = {
@@ -183,7 +183,7 @@ local function registerSpells()
     })
     framework.spells.createComplexSpell({
         id = spellIds.thiefsInstinct,
-        name = "Thief's Instinct",
+        name = "Detect Key",
         magickaCost = 15,
         effects = {
             [1] = {
@@ -224,7 +224,7 @@ local function registerSpells()
     })
     framework.spells.createBasicSpell({
         id = spellIds.fphyggisSoulFinder,
-        name = "Fphyggi's Soul Finder",
+        name = "Detect Enchantment",
         effect = tes3.effect.detectEnchantment,
         range = tes3.effectRange.self,
         magickaCost = 15,
