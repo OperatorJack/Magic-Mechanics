@@ -59,8 +59,7 @@ local function onAttack(e)
     end
 
     -- Only allow cast-on-use and cast-on-strike
-    if (weapon.object.enchantment.castType ~= tes3.enchantmentType.onStrike and
-        weapon.object.enchantment.castType ~= tes3.enchantmentType.onUse) then
+    if (weapon.object.enchantment.castType ~= tes3.enchantmentType.onStrike) then
         return
     end
 
