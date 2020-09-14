@@ -1,6 +1,30 @@
 local lights = {}
 local onSimulate
 
+local function clearOrphanedLights()
+    local cells = tes3.getActiveCells()
+    for _, cell in pairs(cells) do
+        for reference in cell:iterateReferences() do
+            mwse.log(reference.object.id)
+            if (reference.baseObject.id == "LGHT_OJ_EL_LightAnimated" or
+                reference.object.id == "LGHT_OJ_EL_LightStationary") then
+                if (lights[reference] == nil and reference.disabled == false) then
+                    tes3.positionCell{
+                        reference = reference, 
+                        position = { 0, 0, 10000 },
+                    }
+                    reference:disable()
+                    timer.delayOneFrame(function()
+                        mwscript.setDelete{ reference = reference}
+                    end)
+                end
+            end
+        end
+    end
+end
+event.register("cellChanged", clearOrphanedLights)
+event.register("loaded", clearOrphanedLights)
+
 local function getRadiusFromMagnitude(magnitude)
     return magnitude * 25
 end
