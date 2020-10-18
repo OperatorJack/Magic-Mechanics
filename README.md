@@ -26,6 +26,9 @@ Using Invisibility now changes the way you view the world. Instead of only becom
 ## [MM - Enhanced Light](https://www.nexusmods.com/morrowind/mods/47672)
 The light magic effect has been replaced with a Skyrim-style magelight effect. Using the new magelight effect creates an orb of light that will follow and float around you and other NPCs. Casting the magelight on a target location will create an orb of light at the location for the duration of the spell.
 
+## [MM - Enhanced Reflection](https://www.nexusmods.com/morrowind/mods/48956)
+This mod adds reflection mechanics to the Reflect, Shield, Fire Shield, Shock Shield, and Frost Shield magic effects for both the Player and NPCs.
+
 # Honorable Mentions
 These mods are not part of the Magic Mechanics mod series, but they do add new mechanics.
 
