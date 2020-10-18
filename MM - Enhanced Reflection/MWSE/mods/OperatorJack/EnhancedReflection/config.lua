@@ -1,7 +1,7 @@
 -- Load configuration.
-return mwse.loadConfig("MM-Enhanced-Reflection", {
+return mwse.loadConfig("Enhanced Reflection", {
     -- Initialize Settings
-    debug = true,
+    debug = false,
     reflectReflects = true,
     shieldReflects = true,
     fireShieldReflects = true,
