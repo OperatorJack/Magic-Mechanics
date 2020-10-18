@@ -5,7 +5,6 @@ local function clearOrphanedLights()
     local cells = tes3.getActiveCells()
     for _, cell in pairs(cells) do
         for reference in cell:iterateReferences() do
-            mwse.log(reference.object.id)
             if (reference.baseObject.id == "LGHT_OJ_EL_LightAnimated" or
                 reference.object.id == "LGHT_OJ_EL_LightStationary") then
                 if (lights[reference] == nil and reference.disabled == false) then
