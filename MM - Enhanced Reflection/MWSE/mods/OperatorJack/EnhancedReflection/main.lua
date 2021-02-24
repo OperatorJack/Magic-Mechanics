@@ -58,7 +58,8 @@ end
 
 local function isNearReflectingActor(projectileMobile, effect)
   local distance = 160
-  if (projectileMobile.position:distance(tes3.player.position) <= distance) then
+  if (projectileMobile.position:distance(tes3.player.position) <= distance and
+      projectileMobile.firingMobile ~= tes3.mobilePlayer) then
     local isReflectingActor, actor, magnitude = isReflectingActor(tes3.player, effect)
     if (isReflectingActor == true) then
       return isReflectingActor, actor, magnitude
@@ -67,9 +68,11 @@ local function isNearReflectingActor(projectileMobile, effect)
 
   local actors = getActorsNearTargetPosition(projectileMobile.position, distance)
   for _, actor in pairs(actors) do
-    local isReflectingActor, actor, magnitude = isReflectingActor(actor, effect)
-    if (isReflectingActor == true) then
-      return isReflectingActor, actor, magnitude
+    if (projectileMobile.firingMobile ~= actor.mobile) then
+      local isReflectingActor, actor, magnitude = isReflectingActor(actor, effect)
+      if (isReflectingActor == true) then
+        return isReflectingActor, actor, magnitude
+      end
     end
   end
 
