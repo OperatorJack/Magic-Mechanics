@@ -23,6 +23,24 @@ if (framework == nil) then
     return
 end
 
+local function equipPotion(params)
+    tes3.addItem({
+        reference = params.reference,
+        item = params.potion,
+        playSound = false,
+        updateGUI = false
+    })
+
+    mwscript.equip({
+        reference = params.reference,
+        item = params.potion
+    })
+
+    tes3.removeSound({
+        sound = "Drink"
+    })
+end
+
 local enchantmentPotionId = "OJ_MM_EnchantmentPotion"
 local function blockPotionEquipEvent(e)
     if (e.item.id == enchantmentPotionId) then
@@ -83,9 +101,9 @@ local function onAttack(e)
         effects = effects
     })
 
-    mwscript.equip({
+    equipPotion({
         reference = e.reference,
-        item = potion
+        potion = potion
     })
 
     weapon.variables.charge = weapon.variables.charge - chargeCost
