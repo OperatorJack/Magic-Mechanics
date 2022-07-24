@@ -6,16 +6,17 @@ By: OperatorJack, Kurpulio and Vtastek
 - Morrowind
 - Tribunal
 - Bloodmoon
-- MGE XE 0.10.1
+- MGE XE 0.14.0+
 - MWSE 2.1+
 
-This mod requires the most recently nightly build of MWSE. Please be sure to run the mwse-update.exe before playing this mod. If your MWSE build is not from January 23, 2020 or newer, you will receive errors.
+This mod requires the most recently nightly build of MWSE. Please be sure to run the mwse-update.exe before playing this mod.
+
 ===Description===
 Using Invisibility now changes the way you view the world. Instead of only becoming transparent, you see through an ethereal lens that warps and twists the environment around you. Daedra and Undead appear differently, making them distinct from other creatures around you. Please watch the video to see exactly how the new visual effects work.
 
-This mod is inspired by the visual effects of Frodo's ring in The Lord of the Rings movies. 
+This mod is inspired by the visual effects of Frodo's ring in The Lord of the Rings movies.
 
-This mod does not use an ESP. This mod IS NOT compatible with OpenMW, at least until support for MWSE mods is added.
+This mod does not use an ESP. This mod IS NOT compatible with OpenMW.
 
 
 ====Magic Mechanics Mod Series====
@@ -25,18 +26,10 @@ https://github.com/OperatorJack/Magic-Mechanics/blob/master/README.md
 ===Permissions===
 MWSE-Lua code may be used for any purpose for Morrowind. Please do not use it for other games. Please credit OperatorJack as the original author of any code.
 
-Otherwise, this mod or its contents may not be used without contacting the authors first. This was a team effort. Please contact us before using a given resource. 
+Otherwise, this mod or its contents may not be used without contacting the authors first. This was a team effort. Please contact us before using a given resource.
 
 ===Installation===
-Use a mod management tool to install the mod.
-
-The shader file must be setup in MGE before starting the game.
-1) Open MGE.
-2) Click "Shader setup..."
-3) Click "Modding >>>"
-4) Double-click on "Invisibility" so that it moves to the "Active Shaders" box.
-5) Click "Save"
-6) Close MGE.
+Use a mod management tool to install the mod. It is no longer required to manually configure the required shaders.
 
 ===Removal===
 Use a mod management tool to remove any installed files from your mod directory.

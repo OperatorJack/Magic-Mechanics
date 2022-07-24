@@ -18,6 +18,9 @@ local onActivate = nil
 ----------------------------
 
 -- Declare Data Structures --
+local eventController = nil
+local timerController = nil
+
 local activateDist = 192
 
 local VisualController = {
@@ -62,17 +65,18 @@ local VisualController = {
 -------------------------
 
 -- Initialize Controllers --
-local permVisualController = VisualController:new({ 
+local permVisualController = VisualController:new({
   vfxName = "OJ_ET_Telekinesis_pull",
   vfxPath = "OJ\\ET\\telekinesis_pull.nif"
 })
-local tempVisualController = VisualController:new({ 
+local tempVisualController = VisualController:new({
   vfxName = "OJ_ET_Telekinesis_stat",
   vfxPath = "OJ\\ET\\telekinesis_stat.nif"
 })
 
 local target = nil
 local targetOriginalPosition = nil
+local targetActivated = false
 eventController = {
     active = false,
     register = function(self)
@@ -96,12 +100,12 @@ timerController = {
         timerController:cancel()
         return
       end
-  
+
 
     end,
     active = false,
     timer = nil,
-  
+
     start = function(self)
       self.active = true
       self.timer = timer.start({
@@ -138,7 +142,7 @@ onSimulate = function()
     -- If target is not within reach,
     if (target.position:distance(midpoint) > activateDist) then
       -- Apply movement.
-      target.position = target.position:interpolate(midpoint, interpolationDistance)  
+      target.position = target.position:interpolate(midpoint, interpolationDistance)
 
       if (interpolationDistance < 100) then
         interpolationDistance = interpolationDistance * 1.03
@@ -154,20 +158,22 @@ onSimulate = function()
           itemData = itemData,
           count = itemData and itemData.count or 1
         })
-      
+
         target.itemData = nil
         target:disable()
         mwscript.setDelete({ reference = target, delete = true })
       else
+        targetActivated = true
         tes3.player:activate(target)
       end
 
       target = nil
+      targetActivated = false
 
       if (eventController.active == false) then
         event.unregister("simulate", onSimulate, {priority = 1e+06})
       end
-    end 
+    end
   end
 end
 
@@ -199,14 +205,10 @@ onActivate = function(e)
     return
   end
 
-  if (target and target == e.target) then
-    return
-  end
-
-  if (target and target ~= e.target) then
+  if (target and targetActivated == false) then
     return false
   end
-  
+
   -- Block telekinesis on owned books.
   if ( e.target.object.objectType == tes3.objectType.book) then
     if (not tes3.hasOwnershipAccess({ target = e.target })) then
@@ -221,9 +223,9 @@ onActivate = function(e)
       return
     end
   end
-  
+
   local midpoint = getPlayerChestPosition()
-  if (e.target.position:distance(midpoint) > activateDist) then 
+  if (e.target.position:distance(midpoint) > activateDist) then
     if (tempTypes[objectType]) then
       tempVisualController:attach(e.target)
       timer.start({
@@ -239,9 +241,9 @@ onActivate = function(e)
     target = e.target
     targetOriginalPosition = target.position
     permVisualController:attach(target)
- 
+
     return false
-  end 
+  end
 end
 ----------------------------
 
@@ -252,7 +254,7 @@ local function onObjectInvalidated(e)
     targetOriginalPosition = nil
   end
 end
-event.register("objectInvalidated", onObjectInvalidated) 
+event.register("objectInvalidated", onObjectInvalidated)
 
 local function onCellChanged()
   if (target) then
@@ -326,4 +328,3 @@ end
 
 event.register("initialized", onInit)
 -------------------------
-

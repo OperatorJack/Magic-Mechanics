@@ -15,6 +15,27 @@ local stateControllers = nil
 local referenceControllers = nil
 ----------------------------
 
+-- Shaders --
+local shader = nil
+local setShader = function(enabled)
+  if (not mge.shaders) then return end
+
+  shader = mge.shaders.load({name = "Invisibility"})
+  shader.enabled = enabled
+  --mwse.log("Setting shader to %s", enabled)
+  --mwse.log("Shader %s", shader)
+end
+
+local enableShader = function()
+  -- Init shader
+  setShader(true)
+end
+
+local disableShader = function()
+  -- Init shader
+  setShader(false)
+end
+
 -- Declare Data Structures --
 local StateController = {
   new = function(self, o)
@@ -81,7 +102,7 @@ local VisualController = {
           node.rotation = tes3matrix33.new(r.x * s, r.y * s, r.z * s)
         end
       end
-  
+
       ref.sceneNode:attachChild(node, true)
       ref.sceneNode:update()
       ref.sceneNode:updateNodeEffects()
@@ -118,10 +139,10 @@ local ReferenceController = {
       self:handlerSub(ref)
     end
   end,
-  handlerSub = function(self, ref) 
+  handlerSub = function(self, ref)
     local contains = self.references[ref] or false
     if (ref.mobile) then
-      if (contains == false and ref.mobile.isDead == false) then      
+      if (contains == false and ref.mobile.isDead == false) then
         self.visualController:attach(ref)
         self.references[ref] = true
       elseif (contains == true and ref.mobile.isDead == true) then
@@ -131,7 +152,7 @@ local ReferenceController = {
     else
       if (contains == false) then
         self.visualController:attach(ref)
-        self.references[ref] = true  
+        self.references[ref] = true
       elseif (contains == true) then
         self.visualController:detach(ref)
         self.references[ref] = nil
@@ -154,14 +175,15 @@ local ReferenceController = {
 -------------------------
 
 -- Initialize Controllers --
-local shaderActive = false
 timerController = {
   callback = function()
     -- Update state of magic effects.
     stateControllers:update()
 
+    --mwse.log("Current state %s", stateControllers.active)
+
     -- If state is inactive, exit.
-    if (stateControllers.active == false) then  
+    if (stateControllers.active == false) then
         -- Check if there are also no active references and stop timer if so.
         local count = 0
         for _, referenceController in pairs(referenceControllers) do
@@ -170,31 +192,29 @@ timerController = {
             count = count + 1
           end
         end
-  
+
         if (count == 0) then
           -- Disable shaders.
           --print("Disabling shader.")
-          mge.disableShader({shader="Invisibility"})
-          shaderActive = false
+          disableShader()
 
           timerController:cancel()
         end
-  
+
         return
     end
 
-    if (stateControllers.active == true and shaderActive == false) then
+    if (stateControllers.active == true and (not shader or shader.enabled == false)) then
       -- Enable shaders.
       --print("Enabling shader.")
-      mge.enableShader({shader="Invisibility"})
-      shaderActive = true
+      enableShader()
     end
 
     -- Update references based on effect state.
     local cells = tes3.getActiveCells()
     for _, cell in pairs(cells) do
         for ref in cell:iterateReferences() do
-          if (ref.disabled == false and ref.sceneNode) then 
+          if (ref.disabled == false and ref.sceneNode) then
             for _, referenceController in pairs(referenceControllers) do
               referenceController:handler(ref)
             end
@@ -210,21 +230,10 @@ timerController = {
   active = false,
   timer = nil,
 
-  init = function(self)  
+  init = function(self)
     -- Update state of magic effects.
     stateControllers:update()
     if (stateControllers.active == false) then
-      -- Disable shader.
-      timer.start({
-        iterations = 100,
-        duration = 0.01,
-        callback = function()
-          --print("Disabling shader.")
-          mge.disableShader({shader="Invisibility"})
-          shaderActive = false
-        end
-      })
-      -- Disable shader.
       timer.start({
         iterations = 1,
         duration = 1,
@@ -266,16 +275,16 @@ stateControllers = {
 referenceControllers = {
   daedra = ReferenceController:new({
     references = {},
-    visualController = VisualController:new({ 
+    visualController = VisualController:new({
       vfxName = "EI_DaedraVfx",
       vfxPath = "OJ\\EI\\EI_DaedraVfx.nif",
       vfxCenter = false
     }),
     stateController = stateControllers.daedra,
-    
+
     conditional = function (self, ref)
       if (self.stateController.active == true) then
-        if (ref.object.objectType == tes3.objectType.creature and ref.object.type == tes3.creatureType.daedra and whitelistedCreaturesAsNpcs[ref.object.id] == nil) then    
+        if (ref.object.objectType == tes3.objectType.creature and ref.object.type == tes3.creatureType.daedra and whitelistedCreaturesAsNpcs[ref.object.id] == nil) then
           return true
         end
       end
@@ -285,13 +294,13 @@ referenceControllers = {
 
   undead = ReferenceController:new({
     references = {},
-    visualController = VisualController:new({ 
+    visualController = VisualController:new({
       vfxName = "EI_UndeadVfx" ,
       vfxPath = "OJ\\EI\\EI_UndeadVfx.nif",
       vfxCenter = false
     }),
     stateController = stateControllers.undead,
-    
+
     conditional = function (self, ref)
       if (self.stateController.active == true) then
         if (ref.object.objectType == tes3.objectType.creature and ref.object.type == tes3.creatureType.undead) then
@@ -305,6 +314,6 @@ referenceControllers = {
 -------------------------
 
 return {
-  referenceControllers = referenceControllers, 
+  referenceControllers = referenceControllers,
   timerController = timerController
 }

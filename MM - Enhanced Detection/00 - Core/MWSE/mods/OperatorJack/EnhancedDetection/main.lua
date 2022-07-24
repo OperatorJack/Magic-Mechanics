@@ -40,6 +40,7 @@ local timerController = nil
 -- Register Event Handlers --
 local function onObjectInvalidated(e)
   local ref = e.object
+  if not referenceControllers then return end
   for _, referenceController in pairs(referenceControllers) do
     if (referenceController.references[ref] == true) then
       referenceController.references[ref] = nil
