@@ -12,12 +12,12 @@ local function onTick(e)
     local isLit = functions.isReferenceLit(target)
 
     if (isLit == false and e.effectInstance.state ~= tes3.spellState.retired) then
-        ---@type tes3magicEffect
+        ---@type tes3effect
         local effect = framework.functions.getEffectFromEffectOnEffectEvent(e, tes3.effect.magelight)
         local magnitude = framework.functions.getCalculatedMagnitudeFromEffect(effect)
         local duration = effect.duration
         local radius = functions.getRadiusFromMagnitude(magnitude)
-    
+
         functions.attachLightToReference(target, radius, duration)
     end
 
@@ -29,7 +29,7 @@ end
 local function onCollision(e)
     local target = e.sourceInstance.target
     if e.collision and target == nil then
-        ---@type tes3magicEffect
+        ---@type tes3effect
         local effect = framework.functions.getEffectFromEffectOnEffectEvent(e, tes3.effect.magelight)
         local magnitude = framework.functions.getCalculatedMagnitudeFromEffect(effect)
         local duration = effect.duration
