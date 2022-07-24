@@ -16,6 +16,29 @@ local stateControllers = nil
 local referenceControllers = nil
 ----------------------------
 
+-- Declare helper functions --
+
+--- This function returns true if the reference's head (actually the highest
+--- point of the bounding box) is under the water.
+---@param ref tes3reference
+---@return boolean
+local function referenceUnderwater(ref)
+	local cell = ref.cell
+	-- When the cell doesn't have any water the animal can't be in the water.
+	if ( cell.isInterior and not cell.hasWater ) then
+		return false
+	end
+
+	local waterLevel = cell.waterLevel
+	local topPosition = ref.position.z + ref.mobile.boundSize.z
+	local underwater = topPosition < waterLevel
+	if underwater then
+		return true
+	end
+	return false
+end
+----------------------------
+
 -- Declare Data Structures --
 local StateController = {
   new = function(self, o)
@@ -88,7 +111,7 @@ local VisualController = {
           node.rotation = tes3matrix33.new(r.x * s, r.y * s, r.z * s)
         end
       end
-  
+
       ref.sceneNode:attachChild(node, true)
       ref.sceneNode:update()
       ref.sceneNode:updateNodeEffects()
@@ -125,7 +148,7 @@ local ReferenceController = {
       self:handlerSub(ref, playerPosition, self.stateController.magnitude)
     end
   end,
-  handlerSub = function(self, ref, playerPosition, magnitude) 
+  handlerSub = function(self, ref, playerPosition, magnitude)
     local radius = magnitude * unitsPerFoot
 
     local contains = self.references[ref] or false
@@ -144,7 +167,7 @@ local ReferenceController = {
     else
       if (contains == false and distance <= radius) then
         self.visualController:attach(ref)
-        self.references[ref] = true  
+        self.references[ref] = true
       elseif (contains == true and distance > radius) then
         self.visualController:detach(ref)
         self.references[ref] = nil
@@ -194,7 +217,7 @@ timerController = {
     local cells = tes3.getActiveCells()
     for _, cell in pairs(cells) do
         for ref in cell:iterateReferences() do
-          if (ref.disabled == false and ref.sceneNode) then 
+          if (ref.disabled == false and ref.sceneNode) then
             for _, referenceController in pairs(referenceControllers) do
               referenceController:handler(ref, playerPosition)
             end
@@ -239,6 +262,8 @@ stateControllers = {
     self.undead:update()
     self.door:update()
     self.trap:update()
+	self.landAnimal:update()
+	self.underwaterAnimal:update()
   end,
 
   animal = StateController:new({effect = tes3.effect.detectAnimal}),
@@ -251,12 +276,14 @@ stateControllers = {
   undead = StateController:new({effect = tes3.effect.detectUndead}),
   door = StateController:new({effect = tes3.effect.detectDoor}),
   trap = StateController:new({effect = tes3.effect.detectTrap}),
+  landAnimal = StateController:new({effect = tes3.effect.detectAnimalLand}),
+  underwaterAnimal = StateController:new({effect = tes3.effect.detectAnimalUnderwater}),
 }
 
 referenceControllers = {
   animal = ReferenceController:new({
     references = {},
-    visualController = VisualController:new({ 
+    visualController = VisualController:new({
       vfxName = "ED_RFD_DetectAnimal",
       vfxPath = "OJ\\ED\\ED_RFD_DetectAnimal.nif",
       vfxCenter = true
@@ -278,13 +305,13 @@ referenceControllers = {
 
   key = ReferenceController:new({
     references = {},
-    visualController = VisualController:new({ 
+    visualController = VisualController:new({
       vfxName = "ED_RFD_DetectKey",
       vfxPath = "OJ\\ED\\ED_RFD_DetectKey.nif",
       vfxCenter = true
     }),
     stateController = stateControllers.key,
-    
+
     conditional = function (self, ref)
       if (self.stateController.active == true) then
         if (ref.object.isKey == true) then
@@ -305,13 +332,13 @@ referenceControllers = {
 
   enchantment = ReferenceController:new({
     references = {},
-    visualController = VisualController:new({ 
+    visualController = VisualController:new({
       vfxName = "ED_RFD_DetectEnchantment",
       vfxPath = "OJ\\ED\\ED_RFD_DetectEnchantment.nif",
       vfxCenter = true
     }),
     stateController = stateControllers.enchantment,
-    
+
     conditional = function (self, ref)
       if (self.stateController.active == true) then
         if (ref.object.enchantment) then
@@ -339,13 +366,13 @@ referenceControllers = {
 
   daedra = ReferenceController:new({
     references = {},
-    visualController = VisualController:new({ 
+    visualController = VisualController:new({
       vfxName = "ED_RFD_DetectDaedra",
       vfxPath = "OJ\\ED\\ED_RFD_DetectDaedra.nif",
       vfxCenter = true
     }),
     stateController = stateControllers.daedra,
-    
+
     conditional = function (self, ref)
       if (self.stateController.active == true) then
         if (ref.object.objectType == tes3.objectType.creature and ref.object.type == tes3.creatureType.daedra and whitelistedCreaturesAsNpcs[ref.object.id] == nil) then
@@ -358,13 +385,13 @@ referenceControllers = {
 
   automaton = ReferenceController:new({
     references = {},
-    visualController = VisualController:new({ 
+    visualController = VisualController:new({
       vfxName = "ED_RFD_DetectAutomaton" ,
       vfxPath = "OJ\\ED\\ED_RFD_DetectAutomaton.nif",
       vfxCenter = true
     }),
     stateController = stateControllers.automaton,
-    
+
     conditional = function (self, ref)
       if (self.stateController.active == true) then
         if (ref.object.objectType == tes3.objectType.creature and  ref.object.type == tes3.creatureType.normal and ref.object.actorFlags) then
@@ -380,13 +407,13 @@ referenceControllers = {
 
   humanoid = ReferenceController:new({
     references = {},
-    visualController = VisualController:new({ 
+    visualController = VisualController:new({
       vfxName = "ED_RFD_DetectHumanoid" ,
       vfxPath = "OJ\\ED\\ED_RFD_DetectHumanoid.nif",
       vfxCenter = true
     }),
     stateController = stateControllers.humanoid,
-    
+
     conditional = function (self, ref)
       if (self.stateController.active == true) then
         if (ref.object.objectType == tes3.objectType.npc) then
@@ -405,12 +432,12 @@ referenceControllers = {
 
   dead = ReferenceController:new({
     references = {},
-    visualController = VisualController:new({ 
+    visualController = VisualController:new({
       vfxName = "ED_RFD_DetectDead" ,
       vfxPath = "OJ\\ED\\ED_RFD_DetectDead.nif"
     }),
     stateController = stateControllers.dead,
-    
+
     conditional = function (self, ref)
       if (self.stateController.active == true) then
         if (ref.object.objectType == tes3.objectType.npc or ref.object.objectType == tes3.objectType.creature) then
@@ -440,13 +467,13 @@ referenceControllers = {
 
   undead = ReferenceController:new({
     references = {},
-    visualController = VisualController:new({ 
+    visualController = VisualController:new({
       vfxName = "ED_RFD_DetectUndead" ,
       vfxPath = "OJ\\ED\\ED_RFD_DetectUndead.nif",
       vfxCenter = true
     }),
     stateController = stateControllers.undead,
-    
+
     conditional = function (self, ref)
       if (self.stateController.active == true) then
         if (ref.object.objectType == tes3.objectType.creature and ref.object.type == tes3.creatureType.undead) then
@@ -459,13 +486,13 @@ referenceControllers = {
 
   door = ReferenceController:new({
     references = {},
-    visualController = VisualController:new({ 
+    visualController = VisualController:new({
       vfxName = "ED_RFD_DetectDoor" ,
       vfxPath = "OJ\\ED\\ED_RFD_DetectDoor.nif",
       vfxCenter = true
     }),
     stateController = stateControllers.door,
-    
+
     conditional = function (self, ref)
       if (self.stateController.active == true) then
         if (ref.object.objectType == tes3.objectType.door) then
@@ -478,13 +505,13 @@ referenceControllers = {
 
   trap = ReferenceController:new({
     references = {},
-    visualController = VisualController:new({ 
+    visualController = VisualController:new({
       vfxName = "ED_RFD_DetectTrap" ,
       vfxPath = "OJ\\ED\\ED_RFD_DetectTrap.nif",
       vfxCenter = true
     }),
     stateController = stateControllers.trap,
-    
+
     conditional = function (self, ref)
       if (self.stateController.active == true) then
         if (ref.object.objectType == tes3.objectType.door or
@@ -497,10 +524,60 @@ referenceControllers = {
       return false
     end,
   }),
+
+  landAnimal = ReferenceController:new({
+    references = {},
+    visualController = VisualController:new({
+      vfxName = "ED_RFD_DetectAnimal",
+      vfxPath = "OJ\\ED\\ED_RFD_DetectAnimal.nif",
+      vfxCenter = true
+    }),
+    stateController = stateControllers.landAnimal,
+
+    conditional = function (self, ref)
+		---@cast ref tes3reference
+      if (self.stateController.active == true) then
+        if (ref.object.objectType == tes3.objectType.creature and ref.object.type == tes3.creatureType.normal and ref.object.actorFlags) then
+          -- Check if metal bloodtype is not set to exclude automatons.
+          if (bit.band(ref.object.actorFlags, 0x800) == 0) then
+			if not referenceUnderwater(ref) then
+				return true
+			end
+          end
+        end
+      end
+      return false
+    end,
+  }),
+
+  underwaterAnimal = ReferenceController:new({
+    references = {},
+    visualController = VisualController:new({
+      vfxName = "ED_RFD_DetectAnimal",
+      vfxPath = "OJ\\ED\\ED_RFD_DetectAnimal.nif",
+      vfxCenter = true
+    }),
+    stateController = stateControllers.underwaterAnimal,
+
+    conditional = function (self, ref)
+		---@cast ref tes3reference
+      if (self.stateController.active == true) then
+        if (ref.object.objectType == tes3.objectType.creature and ref.object.type == tes3.creatureType.normal and ref.object.actorFlags) then
+          -- Check if metal bloodtype is not set to exclude automatons.
+          if (bit.band(ref.object.actorFlags, 0x800) == 0) then
+			if referenceUnderwater(ref) then
+				return true
+			end
+          end
+        end
+      end
+      return false
+    end,
+  }),
 }
 -------------------------
 
 return {
-  referenceControllers = referenceControllers, 
+  referenceControllers = referenceControllers,
   timerController = timerController
 }

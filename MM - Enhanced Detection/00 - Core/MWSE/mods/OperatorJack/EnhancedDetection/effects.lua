@@ -7,6 +7,8 @@ tes3.claimSpellEffectId("detectDead", 339)
 tes3.claimSpellEffectId("detectUndead", 340)
 tes3.claimSpellEffectId("detectDoor", 341)
 tes3.claimSpellEffectId("detectTrap", 342)
+tes3.claimSpellEffectId("detectAnimalLand", 345)
+tes3.claimSpellEffectId("detectAnimalUnderwater", 346)
 
 local effectVfx = {
 	animal = {
@@ -49,6 +51,14 @@ local effectVfx = {
 		castVFX = "VFX_MysticismCast",
 		hitVFX = "VFX_MysticismHit",
 	},
+	landAnimal = {
+		castVFX = "VFX_MysticismCast",
+		hitVFX = "VFX_MysticismHit",
+	},
+	underwaterAnimal = {
+		castVFX = "VFX_MysticismCast",
+		hitVFX = "VFX_MysticismHit",
+	},
 }
 
 local particleTexture = "vfx_myst_flare01.tga"
@@ -74,6 +84,10 @@ local staticIds = {
 	doorHit = "VFX_OJ_ED_DoorHit",
 	trapCast = "VFX_OJ_ED_TrapCast",
 	trapHit = "VFX_OJ_ED_TrapHit",
+	landAnimalCast = "VFX_OJ_ED_AnimalCast",
+	landAnimalHit = "VFX_OJ_ED_AnimalHit",
+	underwaterAnimalCast = "VFX_OJ_ED_AnimalCast",
+	underwaterAnimalHit = "VFX_OJ_ED_AnimalHit",
 }
 local statics = {
     [staticIds.animalCast] = "EditorMarker.nif",
@@ -96,6 +110,10 @@ local statics = {
     [staticIds.doorHit] = "OJ\\ED\\hit\\ED_H_Door.nif",
     [staticIds.trapCast] = "EditorMarker.nif",
     [staticIds.trapHit] = "OJ\\ED\\hit\\ED_H_Trap.nif",
+	[staticIds.landAnimalCast] = "EditorMarker.nif",
+	[staticIds.landAnimalHit] = "OJ\\ED\\hit\\ED_H_Animal.nif",
+	[staticIds.underwaterAnimalCast] = "EditorMarker.nif",
+	[staticIds.underwaterAnimalHit] = "OJ\\ED\\hit\\ED_H_Animal.nif",
 }
 
 local function addMagicEffects()
@@ -158,7 +176,15 @@ local function addMagicEffects()
 				castVFX = staticIds.trapCast,
 				hitVFX = staticIds.trapHit,
 			},
-		}	
+			landAnimal = {
+				castVFX = staticIds.landAnimalCast,
+				hitVFX = staticIds.landAnimalHit,
+			},
+			underwaterAnimal = {
+				castVFX = staticIds.underwaterAnimalCast,
+				hitVFX = staticIds.underwaterAnimalHit
+			}
+		}
 
 		for effectType , pair in pairs(effectVfx) do
 			for vfxType, staticId in pairs(pair) do
@@ -168,8 +194,8 @@ local function addMagicEffects()
 				end
 			end
 		end
-			
-		print("[Enhanced Detection: INFO] Optional VFX Initialized.")	
+
+		print("[Enhanced Detection: INFO] Optional VFX Initialized.")
 	end
 
 	local animalEffect = tes3.getMagicEffect(tes3.effect.detectAnimal)
@@ -189,7 +215,7 @@ local function addMagicEffects()
 	enchantmentEffect.hitVisualEffect = tes3.getObject(effectVfx.enchantment.hitVFX)
 	enchantmentEffect.particleTexture = particleTexture
 	enchantmentEffect.icon = "RFD\\ED_RFD_icon_enchant.dds"
-	
+
 	framework.effects.mysticism.createBasicEffect({
 		-- Base information.
 		id = tes3.effect.detectDaedra,
@@ -216,7 +242,7 @@ local function addMagicEffects()
 		-- Required callbacks.
 		onTick = function(e) e:trigger() end,
   })
-  
+
 	framework.effects.mysticism.createBasicEffect({
 		-- Base information.
 		id = tes3.effect.detectAutomaton,
@@ -243,7 +269,7 @@ local function addMagicEffects()
 		-- Required callbacks.
 		onTick = function(e) e:trigger() end,
 	})
-  
+
 	framework.effects.mysticism.createBasicEffect({
 		-- Base information.
 		id = tes3.effect.detectHumanoid,
@@ -270,7 +296,7 @@ local function addMagicEffects()
 		-- Required callbacks.
 		onTick = function(e) e:trigger() end,
 	})
-  
+
 	framework.effects.mysticism.createBasicEffect({
 		-- Base information.
 		id = tes3.effect.detectDead,
@@ -297,7 +323,7 @@ local function addMagicEffects()
 		-- Required callbacks.
 		onTick = function(e) e:trigger() end,
 	})
-  
+
 	framework.effects.mysticism.createBasicEffect({
 		-- Base information.
 		id = tes3.effect.detectUndead,
@@ -324,7 +350,7 @@ local function addMagicEffects()
 		-- Required callbacks.
 		onTick = function(e) e:trigger() end,
 	})
-  
+
 	framework.effects.mysticism.createBasicEffect({
 		-- Base information.
 		id = tes3.effect.detectDoor,
@@ -351,7 +377,7 @@ local function addMagicEffects()
 		-- Required callbacks.
 		onTick = function(e) e:trigger() end,
 	})
-  
+
 	framework.effects.mysticism.createBasicEffect({
 		-- Base information.
 		id = tes3.effect.detectTrap,
@@ -378,6 +404,60 @@ local function addMagicEffects()
 		-- Required callbacks.
 		onTick = function(e) e:trigger() end,
 	})
+
+	framework.effects.mysticism.createBasicEffect({
+				-- Base information.
+				id = tes3.effect.detectAnimalLand,
+				name = "Detect Land Animal",
+				description = "Allows the caster of this effect to detect any land animal. The magnitude is the range in feet from the caster that animals are detected.",
+
+				-- Basic dials.
+				baseCost = 0.75,
+
+				-- Various flags.
+				allowEnchanting = true,
+				allowSpellmaking = true,
+				canCastTarget = true,
+				canCastTouch = true,
+				canCastSelf = true,
+
+				-- Graphics/sounds.
+				lighting = { 0.99, 0.95, 0.67 },
+				castVFX = effectVfx.landAnimal.castVFX,
+				hitVFX = effectVfx.landAnimal.hitVFX,
+				icon = "RFD\\ED_RFD_icon_animal.dds",
+				particleTexture = particleTexture,
+
+				-- Required callbacks.
+				onTick = function(e) e:trigger() end,
+	})
+
+	framework.effects.mysticism.createBasicEffect({
+		-- Base information.
+		id = tes3.effect.detectAnimalUnderwater,
+		name = "Detect Underwater Animal",
+		description = "Allows the caster of this effect to detect any underwater animal. The magnitude is the range in feet from the caster that animals are detected.",
+
+		-- Basic dials.
+		baseCost = 0.75,
+
+		-- Various flags.
+		allowEnchanting = true,
+		allowSpellmaking = true,
+		canCastTarget = true,
+		canCastTouch = true,
+		canCastSelf = true,
+
+		-- Graphics/sounds.
+		lighting = { 0.99, 0.95, 0.67 },
+		castVFX = effectVfx.underwaterAnimal.castVFX,
+		hitVFX = effectVfx.underwaterAnimal.hitVFX,
+		icon = "RFD\\ED_RFD_icon_animal.dds",
+		particleTexture = particleTexture,
+
+		-- Required callbacks.
+		onTick = function(e) e:trigger() end,
+})
 end
 
 event.register("magicEffectsResolved", addMagicEffects)
