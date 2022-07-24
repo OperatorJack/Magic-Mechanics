@@ -46,7 +46,7 @@ local function onObjectInvalidated(e)
     end
   end
 end
-event.register("objectInvalidated", onObjectInvalidated) 
+event.register("objectInvalidated", onObjectInvalidated)
 
 local effects = {
   [tes3.effect.detectAnimal] = true,
@@ -59,6 +59,8 @@ local effects = {
   [tes3.effect.detectUndead] = true,
   [tes3.effect.detectDoor] = true,
   [tes3.effect.detectTrap] = true,
+  [tes3.effect.detectAnimalLand] = true,
+  [tes3.effect.detectAnimalUnderwater] = true,
 }
 
 local function onSpellResist(e)
