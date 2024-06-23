@@ -5,16 +5,13 @@ local function clearOrphanedLights()
     local cells = tes3.getActiveCells()
     for _, cell in pairs(cells) do
         for reference in cell:iterateReferences() do
-            if (reference.baseObject.id == "LGHT_OJ_EL_LightAnimated" or
-                reference.object.id == "LGHT_OJ_EL_LightStationary") then
+            if (reference.baseObject.id == "LGHT_OJ_EL_LightAnimated" or reference.object.id ==
+                "LGHT_OJ_EL_LightStationary") then
                 if (lights[reference] == nil and reference.disabled == false) then
-                    tes3.positionCell{
-                        reference = reference, 
-                        position = { 0, 0, 10000 },
-                    }
+                    tes3.positionCell {reference = reference, position = {0, 0, 10000}}
                     reference:disable()
                     timer.delayOneFrame(function()
-                        mwscript.setDelete{ reference = reference}
+                        mwscript.setDelete {reference = reference}
                     end)
                 end
             end
@@ -24,19 +21,13 @@ end
 event.register("cellChanged", clearOrphanedLights)
 event.register("loaded", clearOrphanedLights)
 
-local function getRadiusFromMagnitude(magnitude)
-    return magnitude * 25
-end
+local function getRadiusFromMagnitude(magnitude) return magnitude * 25 end
 
 local function createLight(id, position, cell, radius)
     local lightObject = tes3.getObject(id)
     lightObject.radius = radius
 
-    local lightRef = tes3.createReference({
-        object = lightObject,
-        position = position,
-        cell = cell
-    })
+    local lightRef = tes3.createReference({object = lightObject, position = position, cell = cell})
     lightRef.modified = false
 
     return lightRef
@@ -62,21 +53,16 @@ local function setDeleteLight(light, duration)
     return timer.start({
         duration = duration,
         iterations = 1,
-        callback = function()
-            detachLight(light)
-        end
+        callback = function() detachLight(light) end
     })
 end
 
 local function attachLightToReference(target, radius, duration)
     local light = createAnimatedLight(target.position, target.cell, radius)
 
-    lights[light] = {
-        reference = target,
-        timer = nil
-    }
+    lights[light] = {reference = target, timer = nil}
 
-    event.unregister("simulate", onSimulate)  
+    event.unregister("simulate", onSimulate)
     event.register("simulate", onSimulate)
 
     return light
@@ -85,34 +71,22 @@ end
 local function attachLightToPoint(point, cell, radius, duration)
     local light = createStationaryLight(point, cell, radius)
 
-    lights[light] = {
-        reference = nil,
-        timer = setDeleteLight(light, duration)
-    }
+    lights[light] = {reference = nil, timer = setDeleteLight(light, duration)}
 
     return light
 end
 
 local function getLightForReference(reference)
-    for light, obj in pairs(lights) do
-        if (obj.reference == reference) then
-            return light
-        end 
-    end
+    for light, obj in pairs(lights) do if (obj.reference == reference) then return light end end
     return nil
 end
 
 local function detachLightFromReference(reference)
     local light = getLightForReference(reference)
-    if (light) then
-        detachLight(light)
-    end
+    if (light) then detachLight(light) end
 end
 
-local function isReferenceLit(reference)
-    return getLightForReference(reference) ~= nil
-end
-
+local function isReferenceLit(reference) return getLightForReference(reference) ~= nil end
 
 onSimulate = function(e)
     for light, obj in pairs(lights) do
@@ -131,7 +105,7 @@ onSimulate = function(e)
 
             local distance = light.position:distance(reference.position)
             if (distance > 128) then
-                local interDist = distance / 50
+                local interDist = distance / 25
                 light.position = light.position:interpolate(reference.position, interDist)
             end
 

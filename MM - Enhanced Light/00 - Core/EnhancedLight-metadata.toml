@@ -1,0 +1,44 @@
+[package]
+name = "Magicka Mechanics - Enhanced Light"
+description = "The light magic effect has been replaced with a Skyrim-style magelight effect. Using the new magelight effect creates an orb of light that will follow and float around you and other NPCs."
+homepage = "https://www.nexusmods.com/morrowind/mods/47672"
+repository = "https://github.com/OperatorJack/Magic-Mechanics"
+authors = ["OperatorJack", "Greatness7", "Kurpulio"]
+version = "1.3.0"
+
+# MWSE specific information about this mod
+[tools.mwse]
+lua-mod = "OperatorJack.EnhancedLight"
+load-order = 100
+wait-until-initialize = false
+
+# Dependencies are checked on `initialized` and warn the player if any are missing
+[dependencies]
+  # Assets can be directories or loose folders
+  assets = [
+      "Sound\\OJ\\EL\\LightA.wav",
+      "Sound\\OJ\\EL\\LightC.wav",
+      "Sound\\OJ\\EL\\LightFail.wav",
+      "Sound\\OJ\\EL\\LightH.wav",
+      "Sound\\OJ\\EL\\LightT.wav",
+
+      "Meshes\\OJ\\EL\\LightAnimated.nif",
+      "Meshes\\OJ\\EL\\LightArea.nif",
+      "Meshes\\OJ\\EL\\LightCast.nif",
+      "Meshes\\OJ\\EL\\LightHit.nif",
+      "Meshes\\OJ\\EL\\LightProj.nif",
+      "Meshes\\OJ\\EL\\LightStationary.nif",
+  ]
+
+# Check MWSE version using build number (the number that comes after "v2.1.0" in MWSE.log)
+[dependencies.mwse]
+buildnumber = 3273
+
+# Check MGE XE version
+[dependencies.mge-xe]
+version = ">=0.15.0"
+
+# mwse-module can be a folder or lua file, anywhere in /mods, /lib etc
+[dependencies.mods.MagickaExpanded]
+mwse-module = "OperatorJack.MagickaExpanded"
+version = ">=3.0.0"

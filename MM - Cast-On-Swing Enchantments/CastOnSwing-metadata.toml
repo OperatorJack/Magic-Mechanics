@@ -1,0 +1,21 @@
+[package]
+name = "Magicka Mechanics - Cast-On-Swing Enchantments"
+description = "Weapons with enchantments of Cast-On-Strike and Cast-On-Use types will now work without hitting a target. Just swing your weapon and the enchantment will work as normal, sending a spell projectile towards your target. "
+homepage = "https://www.nexusmods.com/morrowind/mods/47338"
+repository = "https://github.com/OperatorJack/Magic-Mechanics"
+authors = ["OperatorJack"]
+version = "1.5.0"
+
+# MWSE specific information about this mod
+[tools.mwse]
+lua-mod = "OperatorJack.MagicMechanics-CastOnSwingEnchantments"
+load-order = 100
+wait-until-initialize = false
+
+# Check MWSE version using build number (the number that comes after "v2.1.0" in MWSE.log)
+[dependencies.mwse]
+buildnumber = 3273
+
+# Check MGE XE version
+[dependencies.mge-xe]
+version = ">=0.15.0"

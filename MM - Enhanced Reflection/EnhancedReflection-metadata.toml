@@ -1,0 +1,21 @@
+[package]
+name = "Magicka Mechanics - Enhanced Reflection"
+description = "This mod adds reflection mechanics to the Reflect, Shield, Fire Shield, Shock Shield, and Frost Shield magic effects for both the Player and NPCs. "
+homepage = "https://www.nexusmods.com/morrowind/mods/48956"
+repository = "https://github.com/OperatorJack/Magic-Mechanics"
+authors = ["OperatorJack"]
+version = "1.1.0"
+
+# MWSE specific information about this mod
+[tools.mwse]
+lua-mod = "OperatorJack.EnhancedReflection"
+load-order = 100
+wait-until-initialize = false
+
+# Check MWSE version using build number (the number that comes after "v2.1.0" in MWSE.log)
+[dependencies.mwse]
+buildnumber = 3273
+
+# Check MGE XE version
+[dependencies.mge-xe]
+version = ">=0.15.0"

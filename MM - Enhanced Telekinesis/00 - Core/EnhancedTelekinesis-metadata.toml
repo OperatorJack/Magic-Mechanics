@@ -1,0 +1,29 @@
+[package]
+name = "Magicka Mechanics - Enhanced Telekinesis"
+description = "Using telekinesis will now propel objects towards you with new VFX instead of immediately picking the item up. "
+homepage = "https://www.nexusmods.com/morrowind/mods/47534"
+repository = "https://github.com/OperatorJack/Magic-Mechanics"
+authors = ["OperatorJack", "Kurpulio"]
+version = "1.1.0"
+
+# MWSE specific information about this mod
+[tools.mwse]
+lua-mod = "OperatorJack.EnhancedTelekinesis"
+load-order = 100
+wait-until-initialize = false
+
+# Dependencies are checked on `initialized` and warn the player if any are missing
+[dependencies]
+  # Assets can be directories or loose folders
+  assets = [
+      "Meshes\\OJ\\ET\\telekinesis_pull.nif",
+      "Meshes\\OJ\\ET\\telekinesis_stat.nif",
+  ]
+
+# Check MWSE version using build number (the number that comes after "v2.1.0" in MWSE.log)
+[dependencies.mwse]
+buildnumber = 3273
+
+# Check MGE XE version
+[dependencies.mge-xe]
+version = ">=0.15.0"

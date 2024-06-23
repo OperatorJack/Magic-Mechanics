@@ -1,0 +1,64 @@
+[package]
+name = "Magicka Mechanics - Enhanced Detection"
+description = "Adds new Oblivion-inspired visual effects and mechanics for the vanilla detection magic effects, as well as adds 7 new magic effects."
+homepage = "https://www.nexusmods.com/morrowind/mods/47480"
+repository = "https://github.com/OperatorJack/Magic-Mechanics"
+authors = ["OperatorJack", "RedFurryDemon", "Kurpulio"]
+version = "1.3.0"
+
+# MWSE specific information about this mod
+[tools.mwse]
+lua-mod = "OperatorJack.EnhancedDetection"
+load-order = 100
+wait-until-initialize = false
+
+# Dependencies are checked on `initialized` and warn the player if any are missing
+[dependencies]
+  # Assets can be directories or loose folders
+  assets = [
+      "Meshes\\OJ\\ED\\ED_RFD_DetectAnimal.nif",
+      "Meshes\\OJ\\ED\\ED_RFD_DetectAutomaton.nif",
+      "Meshes\\OJ\\ED\\ED_RFD_DetectDaedra.nif",
+      "Meshes\\OJ\\ED\\ED_RFD_DetectDead.nif",
+      "Meshes\\OJ\\ED\\ED_RFD_DetectDoor.nif",
+      "Meshes\\OJ\\ED\\ED_RFD_DetectEnchantment.nif",
+      "Meshes\\OJ\\ED\\ED_RFD_DetectHumanoid.nif",
+      "Meshes\\OJ\\ED\\ED_RFD_DetectKey.nif",
+      "Meshes\\OJ\\ED\\ED_RFD_DetectTrap.nif",
+      "Meshes\\OJ\\ED\\ED_RFD_DetectUndead.nif",
+
+      "Icons\\RFD\\ED_RFD_icon_animal.dds",
+      "Icons\\RFD\\ED_RFD_icon_automaton.dds",
+      "Icons\\RFD\\ED_RFD_icon_daedra.dds",
+      "Icons\\RFD\\ED_RFD_icon_dead.dds",
+      "Icons\\RFD\\ED_RFD_icon_door.dds",
+      "Icons\\RFD\\ED_RFD_icon_enchant.dds",
+      "Icons\\RFD\\ED_RFD_icon_humanoid.dds",
+      "Icons\\RFD\\ED_RFD_icon_key.dds",
+      "Icons\\RFD\\ED_RFD_icon_trap.dds",
+      "Icons\\RFD\\ED_RFD_icon_undead.dds",
+
+      "Icons\\RFD\\B_ED_RFD_icon_animal.dds",
+      "Icons\\RFD\\B_ED_RFD_icon_automaton.dds",
+      "Icons\\RFD\\B_ED_RFD_icon_daedra.dds",
+      "Icons\\RFD\\B_ED_RFD_icon_dead.dds",
+      "Icons\\RFD\\B_ED_RFD_icon_door.dds",
+      "Icons\\RFD\\B_ED_RFD_icon_enchant.dds",
+      "Icons\\RFD\\B_ED_RFD_icon_humanoid.dds",
+      "Icons\\RFD\\B_ED_RFD_icon_key.dds",
+      "Icons\\RFD\\B_ED_RFD_icon_trap.dds",
+      "Icons\\RFD\\B_ED_RFD_icon_undead.dds",
+  ]
+
+# Check MWSE version using build number (the number that comes after "v2.1.0" in MWSE.log)
+[dependencies.mwse]
+buildnumber = 3273
+
+# Check MGE XE version
+[dependencies.mge-xe]
+version = ">=0.15.0"
+
+# mwse-module can be a folder or lua file, anywhere in /mods, /lib etc
+[dependencies.mods.MagickaExpanded]
+mwse-module = "OperatorJack.MagickaExpanded"
+version = ">=3.0.0"

@@ -1,0 +1,21 @@
+[package]
+name = "Magicka Mechanics - Homing Projectiles"
+description = "Adds the ability to control spell projectiles during flight. "
+homepage = "https://www.nexusmods.com/morrowind/mods/47403"
+repository = "https://github.com/OperatorJack/Magic-Mechanics"
+authors = ["OperatorJack"]
+version = "1.1.0"
+
+# MWSE specific information about this mod
+[tools.mwse]
+lua-mod = "OperatorJack.MagicMechanics-HomingProjectiles"
+load-order = 100
+wait-until-initialize = false
+
+# Check MWSE version using build number (the number that comes after "v2.1.0" in MWSE.log)
+[dependencies.mwse]
+buildnumber = 3273
+
+# Check MGE XE version
+[dependencies.mge-xe]
+version = ">=0.15.0"

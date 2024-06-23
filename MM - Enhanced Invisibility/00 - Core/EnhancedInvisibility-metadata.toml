@@ -1,0 +1,36 @@
+[package]
+name = "Magicka Mechanics - Enhanced Invisibility"
+description = "Using invisibility now changes the way you view the world. Instead of only becoming transparent, you see through an ethereal lens that warps and twists the environment around you. Also, under the effect of invisibility, Daedra and undead creatures will seem... different. "
+homepage = "https://www.nexusmods.com/morrowind/mods/47565"
+repository = "https://github.com/OperatorJack/Magic-Mechanics"
+authors = ["OperatorJack", "Vstastek", "Kurpulio"]
+version = "1.2.0"
+
+# MWSE specific information about this mod
+[tools.mwse]
+lua-mod = "OperatorJack.EnhancedInvisibility"
+load-order = 100
+wait-until-initialize = false
+
+# Dependencies are checked on `initialized` and warn the player if any are missing
+[dependencies]
+  # Assets can be directories or loose folders
+  assets = [
+      "Shaders\\XEShaders\\Invisibility.fx",
+
+      "Meshes\\OJ\\EI\\EI_DaedraVfx.nif",
+      "Meshes\\OJ\\EI\\EI_UndeadVfx.nif",
+  ]
+
+# Check MWSE version using build number (the number that comes after "v2.1.0" in MWSE.log)
+[dependencies.mwse]
+buildnumber = 3273
+
+# Check MGE XE version
+[dependencies.mge-xe]
+version = ">=0.15.0"
+
+# mwse-module can be a folder or lua file, anywhere in /mods, /lib etc
+[dependencies.mods.MagickaExpanded]
+mwse-module = "OperatorJack.MagickaExpanded"
+version = ">=3.0.0"

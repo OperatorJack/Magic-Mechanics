@@ -1,4 +1,4 @@
-local framework = include("OperatorJack.MagickaExpanded.magickaExpanded")
+local framework = require("OperatorJack.MagickaExpanded")
 
 local spellIds = {
     spiritSeeker = "OJ_ED_SpiritSeeker",
@@ -15,116 +15,41 @@ local spellIds = {
 
 local distributions = {
     ["llaalam madalas"] = {
-        spellIds.heartbeat,
-        spellIds.necromancersFeast,
-        spellIds.notorgosEscapeRoute,
-        spellIds.ilverisWaryEye,
-        spellIds.sothasLostServant,
-        spellIds.auraWhisper
+        spellIds.heartbeat, spellIds.necromancersFeast, spellIds.notorgosEscapeRoute,
+        spellIds.ilverisWaryEye, spellIds.sothasLostServant, spellIds.auraWhisper
     },
-    ["felara andrethi"] = {
-        spellIds.heartbeat,
-        spellIds.necromancersFeast,
-        spellIds.ilverisWaryEye
-    },
+    ["felara andrethi"] = {spellIds.heartbeat, spellIds.necromancersFeast, spellIds.ilverisWaryEye},
     ["lloros sarano"] = {
-        spellIds.spiritSeeker,
-        spellIds.notorgosEscapeRoute,
-        spellIds.ilverisWaryEye,
+        spellIds.spiritSeeker, spellIds.notorgosEscapeRoute, spellIds.ilverisWaryEye,
         spellIds.fphyggisSoulFinder
     },
-    ["llathyno hlaalu"] = {
-        spellIds.spiritSeeker,
-        spellIds.notorgosEscapeRoute
-    },
-    ["eldrilu dalen"] = {
-        spellIds.spiritSeeker,
-        spellIds.ilverisWaryEye
-    },
-    ["relms gilvilo"] = {
-        spellIds.spiritSeeker,
-        spellIds.sothasLostServant
-    },
-    ["nilvyn drothan"] = {
-        spellIds.heartbeat,
-        spellIds.sothasLostServant
-    },
-    ["minninbi selkin-adda"] = {
-        spellIds.heartbeat,
-        spellIds.notorgosEscapeRoute
-    },
-    ["namanian facian"] = {
-        spellIds.notorgosEscapeRoute
-    },
-    ["llaros uvayn"] = {
-        spellIds.notorgosEscapeRoute
-    },
-    ["sonummu zabamat"] = {
-        spellIds.spiritSeeker,
-        spellIds.ilverisWaryEye
-    },
-    ["orrent geontene"] = {
-        spellIds.notorgosEscapeRoute,
-        spellIds.sothasLostServant
-    },
-    ["sirilonwe"] = {
-        spellIds.fphyggisSoulFinder,
-        spellIds.auraWhisper
-    },
-    ["sharn gra-muzgob"] = {
-        spellIds.necromancersFeast
-    },
-    ["gildan"] = {
-        spellIds.thiefsInstinct,
-        spellIds.notorgosEscapeRoute
-    },
-    ["dulian"] = {
-        spellIds.spiritSeeker,
-        spellIds.ilverisWaryEye,
-        spellIds.sothasLostServant
-    },
-    ["nebia amphia"] = {
-        spellIds.spiritSeeker
-    },
-    ["lalatia varian"] = {
-        spellIds.spiritSeeker,
-        spellIds.auraWhisper
-    },
-    ["leles birian"] = {
-        spellIds.notorgosEscapeRoute,
-        spellIds.auraWhisper
-    },
-    ["idonea munia"] = {
-        spellIds.sothasLostServant
-    },
+    ["llathyno hlaalu"] = {spellIds.spiritSeeker, spellIds.notorgosEscapeRoute},
+    ["eldrilu dalen"] = {spellIds.spiritSeeker, spellIds.ilverisWaryEye},
+    ["relms gilvilo"] = {spellIds.spiritSeeker, spellIds.sothasLostServant},
+    ["nilvyn drothan"] = {spellIds.heartbeat, spellIds.sothasLostServant},
+    ["minninbi selkin-adda"] = {spellIds.heartbeat, spellIds.notorgosEscapeRoute},
+    ["namanian facian"] = {spellIds.notorgosEscapeRoute},
+    ["llaros uvayn"] = {spellIds.notorgosEscapeRoute},
+    ["sonummu zabamat"] = {spellIds.spiritSeeker, spellIds.ilverisWaryEye},
+    ["orrent geontene"] = {spellIds.notorgosEscapeRoute, spellIds.sothasLostServant},
+    ["sirilonwe"] = {spellIds.fphyggisSoulFinder, spellIds.auraWhisper},
+    ["sharn gra-muzgob"] = {spellIds.necromancersFeast},
+    ["gildan"] = {spellIds.thiefsInstinct, spellIds.notorgosEscapeRoute},
+    ["dulian"] = {spellIds.spiritSeeker, spellIds.ilverisWaryEye, spellIds.sothasLostServant},
+    ["nebia amphia"] = {spellIds.spiritSeeker},
+    ["lalatia varian"] = {spellIds.spiritSeeker, spellIds.auraWhisper},
+    ["leles birian"] = {spellIds.notorgosEscapeRoute, spellIds.auraWhisper},
+    ["idonea munia"] = {spellIds.sothasLostServant},
     ["onlyhestandsthere"] = {
-        spellIds.necromancersFeast,
-        spellIds.thiefsInstinct,
-        spellIds.sothasLostServant
+        spellIds.necromancersFeast, spellIds.thiefsInstinct, spellIds.sothasLostServant
     },
-    ["j'rasha"] = {
-        spellIds.spiritSeeker,
-        spellIds.thiefsInstinct,
-        spellIds.ilverisWaryEye
-    },
-    ["Jeanne Andre"] = {
-        spellIds.spiritSeeker,
-        spellIds.thiefsInstinct,
-        spellIds.fphyggisSoulFinder
-    },
-    ["bronrod_the_roarer"] = {
-        spellIds.heartbeat
-    },
+    ["j'rasha"] = {spellIds.spiritSeeker, spellIds.thiefsInstinct, spellIds.ilverisWaryEye},
+    ["Jeanne Andre"] = {spellIds.spiritSeeker, spellIds.thiefsInstinct, spellIds.fphyggisSoulFinder},
+    ["bronrod_the_roarer"] = {spellIds.heartbeat},
     ["todd"] = {
-        spellIds.spiritSeeker,
-        spellIds.heartbeat,
-        spellIds.necromancersFeast,
-        spellIds.thiefsInstinct,
-        spellIds.notorgosEscapeRoute,
-        spellIds.ilverisWaryEye,
-        spellIds.fphyggisSoulFinder,
-        spellIds.sothasLostServant,
-        spellIds.auraWhisper
+        spellIds.spiritSeeker, spellIds.heartbeat, spellIds.necromancersFeast,
+        spellIds.thiefsInstinct, spellIds.notorgosEscapeRoute, spellIds.ilverisWaryEye,
+        spellIds.fphyggisSoulFinder, spellIds.sothasLostServant, spellIds.auraWhisper
     }
 }
 
@@ -133,7 +58,7 @@ local function registerSpells()
         id = spellIds.spiritSeeker,
         name = "Spirit Seeker",
         effect = tes3.effect.detectUndead,
-        range = tes3.effectRange.self,
+        rangeType = tes3.effectRange.self,
         magickaCost = 10,
         duration = 10,
         min = 30,
@@ -157,7 +82,7 @@ local function registerSpells()
                 duration = 10,
                 min = 100,
                 max = 100
-            },
+            }
         }
     })
     framework.spells.createComplexSpell({
@@ -178,7 +103,7 @@ local function registerSpells()
                 duration = 10,
                 min = 100,
                 max = 100
-            },
+            }
         }
     })
     framework.spells.createComplexSpell({
@@ -199,14 +124,14 @@ local function registerSpells()
                 duration = 10,
                 min = 10,
                 max = 10
-            },
+            }
         }
     })
     framework.spells.createBasicSpell({
         id = spellIds.notorgosEscapeRoute,
         name = "Notorgo's Escape Route",
         effect = tes3.effect.detectDoor,
-        range = tes3.effectRange.self,
+        rangeType = tes3.effectRange.self,
         magickaCost = 15,
         duration = 30,
         min = 100,
@@ -216,7 +141,7 @@ local function registerSpells()
         id = spellIds.ilverisWaryEye,
         name = "Ilveri's Wary Eye",
         effect = tes3.effect.detectDaedra,
-        range = tes3.effectRange.self,
+        rangeType = tes3.effectRange.self,
         magickaCost = 15,
         duration = 10,
         min = 100,
@@ -226,7 +151,7 @@ local function registerSpells()
         id = spellIds.fphyggisSoulFinder,
         name = "Detect Enchantment",
         effect = tes3.effect.detectEnchantment,
-        range = tes3.effectRange.self,
+        rangeType = tes3.effectRange.self,
         magickaCost = 15,
         duration = 10,
         min = 10,
@@ -236,7 +161,7 @@ local function registerSpells()
         id = spellIds.sothasLostServant,
         name = "Sotha's Lost Servant",
         effect = tes3.effect.detectAutomaton,
-        range = tes3.effectRange.self,
+        rangeType = tes3.effectRange.self,
         magickaCost = 15,
         duration = 10,
         min = 100,
@@ -281,7 +206,7 @@ local function registerSpells()
                 duration = 10,
                 min = 150,
                 max = 150
-            },
+            }
         }
     })
     framework.spells.createComplexSpell({
@@ -318,15 +243,11 @@ local function registerSpells()
         if (npc) then
             if (type(distributionSpellIds) ~= "table") then
                 local spell = tes3.getObject(distributionSpellIds)
-                if (spell) then
-                    npc.spells:add(spell)
-                end
+                if (spell) then npc.spells:add(spell) end
             else
                 for _, spellId in pairs(distributionSpellIds) do
                     local spell = tes3.getObject(spellId)
-                    if (spell) then
-                        npc.spells:add(spell)
-                    end
+                    if (spell) then npc.spells:add(spell) end
                 end
             end
         end
