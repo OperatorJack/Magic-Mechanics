@@ -1,15 +1,15 @@
 local config = require("OperatorJack.EnhancedReflection.config")
 
 local function createGeneralCategory(page)
-    local category = page:createCategory{
+    local category = page:createCategory {
         label = "General Settings"
     }
 
     -- Create option to capture debug mode.
-    category:createOnOffButton{
+    category:createOnOffButton {
         label = "Enable Debug Messages",
         description = "If enabled, Morrowind will show all debug messages related to this mod in-game and in the MWSE.log.",
-        variable = mwse.mcm.createTableVariable{
+        variable = mwse.mcm.createTableVariable {
             id = "debug",
             table = config
         }
@@ -19,59 +19,59 @@ local function createGeneralCategory(page)
 end
 
 local function createReflectionCategory(page)
-    local category = page:createCategory{
+    local category = page:createCategory {
         label = "Reflection Settings"
     }
 
-    category:createOnOffButton{
+    category:createOnOffButton {
         label = "Reflect Effect Reflects Spell Projectiles",
         description = "If enabled, the reflect effect will reflect spells directly back to their caster.",
-        variable = mwse.mcm.createTableVariable{
+        variable = mwse.mcm.createTableVariable {
             id = "reflectReflects",
             table = config
         }
     }
 
-    category:createOnOffButton{
+    category:createOnOffButton {
         label = "Shield Effect Reflects Spell Projectiles",
         description = "If enabled, the shield effect will reflect spells.",
-        variable = mwse.mcm.createTableVariable{
-            id = "fireShieldReflects",
+        variable = mwse.mcm.createTableVariable {
+            id = "shieldReflects",
             table = config
         }
     }
 
-    category:createOnOffButton{
+    category:createOnOffButton {
         label = "Fire Shield Effect Reflects Fire Spell Projectiles",
         description = "If enabled, the fire shield effect will reflect spells which contain the fire damage effect.",
-        variable = mwse.mcm.createTableVariable{
+        variable = mwse.mcm.createTableVariable {
             id = "fireShieldReflects",
             table = config
         }
     }
 
-    category:createOnOffButton{
+    category:createOnOffButton {
         label = "Frost Shield Effect Reflects Frost Spell Projectiles",
         description = "If enabled, the frost shield effect will reflect spells which contain the frost damage effect.",
-        variable = mwse.mcm.createTableVariable{
+        variable = mwse.mcm.createTableVariable {
             id = "frostShieldReflects",
             table = config
         }
     }
 
-    category:createOnOffButton{
+    category:createOnOffButton {
         label = "Lightening Shield Effect Reflects Shock Spell Projectiles",
         description = "If enabled, the lightening shield effect will reflect spells which contain the shock damage effect.",
-        variable = mwse.mcm.createTableVariable{
+        variable = mwse.mcm.createTableVariable {
             id = "shockShieldReflects",
             table = config
         }
     }
 
-    category:createOnOffButton{
+    category:createOnOffButton {
         label = "Magnitude Based Reflection Chance",
         description = "If enabled, reflection chance will be calculated based on the magnitude of the effect. If disabled, reflection chance is always 100%.",
-        variable = mwse.mcm.createTableVariable{
+        variable = mwse.mcm.createTableVariable {
             id = "magnitudeBasedChance",
             table = config
         }
@@ -81,7 +81,7 @@ local function createReflectionCategory(page)
 end
 
 local function createGeneralPage(template)
-    local page = template:createSideBarPage{
+    local page = template:createSideBarPage {
         label = "General Settings",
         description = "Hover over a setting to learn more about it."
     }
