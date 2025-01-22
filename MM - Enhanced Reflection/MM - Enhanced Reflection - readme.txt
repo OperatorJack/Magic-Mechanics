@@ -6,7 +6,7 @@ By: OperatorJack
 - Morrowind
 - Tribunal
 - Bloodmoon
-- MGE XE 0.10.1
+- MGE XE 0.15.0+
 - MWSE 2.1+
 
 This mod requires the most recently nightly build of MWSE. Please be sure to run the mwse-update.exe before playing this mod. If your MWSE build is not from January 12, 2020 or newer, you will receive errors.

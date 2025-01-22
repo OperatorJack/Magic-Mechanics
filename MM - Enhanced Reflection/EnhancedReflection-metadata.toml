@@ -4,7 +4,7 @@ description = "This mod adds reflection mechanics to the Reflect, Shield, Fire S
 homepage = "https://www.nexusmods.com/morrowind/mods/48956"
 repository = "https://github.com/OperatorJack/Magic-Mechanics"
 authors = ["OperatorJack"]
-version = "1.1.0"
+version = "1.1.1"
 
 # MWSE specific information about this mod
 [tools.mwse]
