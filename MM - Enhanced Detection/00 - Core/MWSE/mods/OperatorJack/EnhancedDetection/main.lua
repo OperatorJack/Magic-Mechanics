@@ -2,7 +2,7 @@
 if (mwse.buildDate == nil) or (mwse.buildDate < 20200122) then
     local function warning()
         tes3.messageBox("[Enhanced Detection ERROR] Your MWSE is out of date!" ..
-                            " You will need to update to a more recent version to use this mod.")
+            " You will need to update to a more recent version to use this mod.")
     end
     event.register("initialized", warning)
     event.register("loaded", warning)
@@ -15,7 +15,7 @@ local framework = require("OperatorJack.MagickaExpanded")
 if (framework == nil) then
     local function warning()
         tes3.messageBox("[Enhanced Detection ERROR] Magicka Expanded framework is not installed!" ..
-                            " You will need to install it to use this mod.")
+            " You will need to install it to use this mod.")
     end
     event.register("initialized", warning)
     event.register("loaded", warning)
@@ -61,7 +61,7 @@ local effects = {
 }
 
 local function onSpellResist(e)
-    if (timerController.active == false and timerController.timer == nil) then
+    if (timerController and timerController.active == false and timerController.timer == nil) then
         for _, effect in pairs(e.sourceInstance.source.effects) do
             if (effects[effect.id]) then
                 timerController:start()
@@ -77,7 +77,7 @@ event.register("spellResist", onSpellResist)
 local function onLoaded(e)
     -- Clean list of references. This removes vfx from all references when changing saves, if needed.
     local controllers = dofile(
-                            "Data Files\\MWSE\\mods\\OperatorJack\\EnhancedDetection\\controllers.lua")
+        "Data Files\\MWSE\\mods\\OperatorJack\\EnhancedDetection\\controllers.lua")
 
     referenceControllers = controllers.referenceControllers
     timerController = controllers.timerController
